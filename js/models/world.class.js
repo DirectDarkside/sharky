@@ -6,7 +6,7 @@ class World {
         new Pufferfish(400, 350),
     ];
     backgroundObjects = [
-        new BackgroundObject('./assets/img/3. Background/Barrier/2.png'),
+        new BackgroundObject('./assets/img/3. Background/Barrier/2.png', 300),
     ];
 
     canvas;
