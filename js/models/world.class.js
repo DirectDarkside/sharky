@@ -1,15 +1,12 @@
 class World {
     character = new Character();
-    background = new Background();
     enemies = [
         new Pufferfish(400, 100),
         new Pufferfish(400, 200),
         new Pufferfish(400, 350),
     ];
-    coins = [
-        new Coin(),
-        new Coin(),
-        new Coin(),
+    backgroundObjects = [
+        new BackgroundObject('./assets/img/3. Background/Barrier/2.png'),
     ];
 
     canvas;
@@ -23,18 +20,23 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.drawImage(this.background.img, 0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
-        this.coins.forEach(coin => {
-            this.ctx.drawImage(coin.img, coin.x, coin.y, coin.width, coin.height);
-        });
-        this.enemies.forEach(enemie => {
-            this.ctx.drawImage(enemie.img, enemie.x, enemie.y, enemie.width, enemie.height);
-        });
+        this.addObjectsToMap(this.backgroundObjects);
+        this.addObjectsToMap(this.enemies);
+        this.addToMap(this.character);
 
         //Draw() wird immer wieder aufgerufen
         requestAnimationFrame(() => {
             this.draw();
         });
+    }
+
+    addObjectsToMap(objects) {
+        objects.forEach(object => {
+            this.addToMap(object);
+        });
+    }
+
+    addToMap(mo) {
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
     }
 }
