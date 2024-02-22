@@ -6,7 +6,13 @@ class World {
         new Pufferfish(400, 350),
     ];
     backgroundObjects = [
-        new BackgroundObject('./assets/img/3. Background/Barrier/2.png', 300),
+        // new BackgroundObject('./assets/img/3. Background/Dark/1.png', 0, 0, canvas.width / 2, canvas.height),
+        // new BackgroundObject('./assets/img/3. Background/Dark/2.png', canvas.width / 2, 0, canvas.width / 2, canvas.height),
+        new BackgroundObject('./assets/img/3. Background/Dark/1.png', 0, 0, canvas.width, canvas.height),
+        new BackgroundObject('./assets/img/3. Background/Layers/1. Light/1.png', 0, 0, canvas.width, canvas.height),
+        // new BackgroundObject('./assets/img/3. Background/Layers/1. Light/2.png', canvas.width / 2, 0, canvas.width / 2, canvas.height),
+        new BackgroundObject('./assets/img/3. Background/Barrier/2.png', 320, 330),
+
     ];
 
     canvas;
