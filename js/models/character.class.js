@@ -65,6 +65,11 @@ class Character extends MovableObject {
                 this.y += this.speed;
                 this.swimming_sound.play();
             }
+            if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                world.character.movement = true;
+            } else {
+                world.character.movement = false;
+            }
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 

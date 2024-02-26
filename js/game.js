@@ -11,16 +11,13 @@ function init() {
 }
 
 document.addEventListener('keydown', (event) => {
-    console.log(event.keyCode);
     
     if(event.keyCode == 68) {
         keyboard.RIGHT = true;
-        world.character.movement = true;
     }
 
     if(event.keyCode == 65) {
         keyboard.LEFT = true;
-        world.character.movement = true;
     }
 
     if(event.keyCode == 87) {
@@ -41,12 +38,10 @@ document.addEventListener('keyup', (event) => {
     
     if(event.keyCode == 68) {
         keyboard.RIGHT = false;
-        world.character.movement = false;
     }
 
     if(event.keyCode == 65) {
         keyboard.LEFT = false;
-        world.character.movement = false;
     }
 
     if(event.keyCode == 87) {
