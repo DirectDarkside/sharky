@@ -23,6 +23,7 @@ class Character extends MovableObject {
             './assets/img/1.Sharkie/1.IDLE/18.png',
     ];
     world;
+    swimming_sound = new Audio('./assets/audio/swimming_sound.mp3');
 
     constructor() {
         super().loadImage('./assets/img/1.Sharkie/1.IDLE/1.png')
@@ -34,20 +35,25 @@ class Character extends MovableObject {
     animate() {
 
         setInterval(() => {
+            this.swimming_sound.pause();
             if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
                 this.otherDirection = false;
+                this.swimming_sound.play();
             }
 
             if(this.world.keyboard.LEFT && this.x > 0) {
                 this.x -= this.speed;
                 this.otherDirection = true;
+                this.swimming_sound.play();
             }
             if(this.world.keyboard.UP && this.y > -50) {
                 this.y -= this.speed;
+                this.swimming_sound.play();
             }
             if(this.world.keyboard.DOWN && this.y < 355) {
                 this.y += this.speed;
+                this.swimming_sound.play();
             }
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);

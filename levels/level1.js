@@ -2,6 +2,8 @@ const enemies = [
     new Pufferfish(400, 100),
     new Pufferfish(400, 200),
     new Pufferfish(400, 350),
+
+    new Boss(600, 100),
 ];
 
 const backgroundObjects = [
