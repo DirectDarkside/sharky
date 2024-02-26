@@ -51,7 +51,6 @@ class Character extends MovableObject {
                 this.otherDirection = false;
                 this.swimming_sound.play();
             }
-
             if(this.world.keyboard.LEFT && this.x > 0) {
                 this.x -= this.speed;
                 this.otherDirection = true;
