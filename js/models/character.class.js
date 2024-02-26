@@ -22,12 +22,22 @@ class Character extends MovableObject {
             './assets/img/1.Sharkie/1.IDLE/17.png',
             './assets/img/1.Sharkie/1.IDLE/18.png',
     ];
+    IMAGES_SWIMMING_MOVEMENT = [
+        './assets/img/1.Sharkie/3.Swim/1.png',
+        './assets/img/1.Sharkie/3.Swim/2.png',
+        './assets/img/1.Sharkie/3.Swim/3.png',
+        './assets/img/1.Sharkie/3.Swim/4.png',
+        './assets/img/1.Sharkie/3.Swim/5.png',
+        './assets/img/1.Sharkie/3.Swim/6.png',
+    ];
     world;
     swimming_sound = new Audio('./assets/audio/swimming_sound.mp3');
+    movement = false;
 
     constructor() {
         super().loadImage('./assets/img/1.Sharkie/1.IDLE/1.png')
-        this.loadImages(this.IMAGES_SWIMMING);    
+        this.loadImages(this.IMAGES_SWIMMING);   
+        this.loadImages(this.IMAGES_SWIMMING_MOVEMENT); 
 
         this.animate();
     }
@@ -58,14 +68,16 @@ class Character extends MovableObject {
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
+        
         setInterval(() => {
             //Wait Animation
-            let index = this.currentImage % this.IMAGES_SWIMMING.length;
-            let path = this.IMAGES_SWIMMING[index];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-            
+            if(!this.movement) {
+                this.playAnimation(this.IMAGES_SWIMMING);
+            } else if(this.movement) {
+                this.playAnimation(this.IMAGES_SWIMMING_MOVEMENT);
+            }
         }, 150);
+        
     }
 
     moveUp() {
