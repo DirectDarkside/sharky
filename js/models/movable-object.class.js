@@ -10,6 +10,8 @@ class MovableObject {
     otherDirection = false;
     energy = 100;
 
+    lastHit = 0;
+
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
@@ -66,5 +68,24 @@ class MovableObject {
           this.x < mo.x &&
           this.y < mo.y + mo.height
         );
-      }
+    }
+
+    hit() {
+        this.energy -= 20;
+        if(this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed / 1000;
+        return timepassed < 1;
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
 }
