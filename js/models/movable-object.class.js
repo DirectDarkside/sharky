@@ -8,6 +8,7 @@ class MovableObject {
     imageCache = {};
     speed = 0.15;
     otherDirection = false;
+    energy = 100;
 
     loadImage(path) {
         this.img = new Image();
@@ -57,4 +58,13 @@ class MovableObject {
             this.img = this.imageCache[images[index]];
             this.currentImage++;
     }
+
+    isColliding(mo) {
+        return (
+          this.x + this.width > mo.x &&
+          this.y + this.height > mo.y &&
+          this.x < mo.x &&
+          this.y < mo.y + mo.height
+        );
+      }
 }
