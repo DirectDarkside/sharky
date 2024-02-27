@@ -23,13 +23,20 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log('Moving right')
+        this.x += this.speed;
+        this.otherDirection = false;
     }
 
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 0.250);
+        this.x -= this.speed;
+    }
+
+    moveUp() {
+        this.y -= this.speed;
+    }
+
+    moveDown() {
+        this.y += this.speed;
     }
 
     playAnimation(images) {
