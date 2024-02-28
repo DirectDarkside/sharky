@@ -1,25 +1,11 @@
-class MovableObject {
-    x = 120;
-    y = 300;
-    img;
-    height = 150;
-    width = 150;
-    currentImage = 0;
-    imageCache = {};
+class MovableObject extends DrawableObject {
+   
     speed = 0.15;
     otherDirection = false;
     energy = 100;
-
     lastHit = 0;
 
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
+    
 
     drawFrame(ctx) {
         if(this instanceof Character || this instanceof Pufferfish || this instanceof Boss) {
@@ -29,14 +15,6 @@ class MovableObject {
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
         }
-    }
-
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
     }
 
     moveRight() {
