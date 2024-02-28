@@ -26,6 +26,7 @@ class World {
             if(this.character.isColliding(enemy)) {
                 console.log('Hit');
                 this.character.hit();
+                this.statusBar.setPercentage(this.character.energy);
                 console.log(this.character.energy);
             }
         });
