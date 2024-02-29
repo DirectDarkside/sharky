@@ -4,8 +4,22 @@ body {
     align-items: center;
     background-image: url('./assets/img/3. Background/Legacy/Layers/5. Water/L2.png');
     background-repeat: no-repeat;
+    margin: 0;
 }
 
 canvas {
     background-color: black;
+    display: block;
+}
+
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
 }
