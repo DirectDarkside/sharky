@@ -44,6 +44,14 @@ class World {
           console.log(this.character.energy);
       }
   });
+    this.throwableObjects.forEach((throwableObject) => {
+      this.level.enemies.forEach((enemy, index) => {
+        if(enemy.isColliding(throwableObject)) {
+          console.log('Bubble Hit');
+          this.level.enemies.splice(index, 1);
+        }
+      });
+    });
   }
 
   draw() {
