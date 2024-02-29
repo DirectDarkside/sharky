@@ -84,17 +84,7 @@ class Character extends MovableObject {
 
     setInterval(() => {
       //Wait Animation
-      if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-      } else if(this.isHurt()) {
-        this.playAnimation(this.IMAGES_POISON_HURT);
-      } else if(this.isAttack()) {
-        this.playAnimation(this.IMAGES_BUBBLE_ATTACK);
-      } else if(!this.movement) {
-        this.playAnimation(this.IMAGES_SWIMMING);
-      } else if(this.movement) {
-        this.playAnimation(this.IMAGES_SWIMMING_MOVEMENT);
-      } 
+       this.checkAnimations();
     }, 150);
   }
 
@@ -121,6 +111,20 @@ class Character extends MovableObject {
       world.character.movement = true;
     } else {
       world.character.movement = false;
+    }
+  }
+
+  checkAnimations() {
+    if (this.isDead()) {
+      this.playAnimation(this.IMAGES_DEAD);
+    } else if(this.isHurt()) {
+      this.playAnimation(this.IMAGES_POISON_HURT);
+    } else if(this.isAttack()) {
+      this.playAnimation(this.IMAGES_BUBBLE_ATTACK);
+    } else if(!this.movement) {
+      this.playAnimation(this.IMAGES_SWIMMING);
+    } else if(this.movement) {
+      this.playAnimation(this.IMAGES_SWIMMING_MOVEMENT);
     }
   }
 
