@@ -26,12 +26,21 @@ class World {
         this.checkCollisions();
         this.checkThrowObjects();
     }, 1000);
+
+    setInterval(() => {
+      this.checkHitCollision();
+    }, 250);
   }
 
   checkThrowObjects() {
     if(this.keyboard.SPACE) {
-      let bottle = new ThrowableObject(this.character.hitbox.right, this.character.hitbox.top + 20);
-      this.throwableObjects.push(bottle);
+      if(this.character.otherDirection) {
+        let bubble = new ThrowableObject(this.character.hitbox.left, this.character.hitbox.top + 20, this.character.otherDirection);
+        this.throwableObjects.push(bubble);
+      } else {
+        let bubble = new ThrowableObject(this.character.hitbox.right, this.character.hitbox.top + 20, this.character.otherDirection);
+        this.throwableObjects.push(bubble); 
+      }
     }
   }
 
@@ -44,11 +53,15 @@ class World {
           console.log(this.character.energy);
       }
   });
-    this.throwableObjects.forEach((throwableObject) => {
-      this.level.enemies.forEach((enemy, index) => {
+  }
+
+  checkHitCollision() {
+    this.throwableObjects.forEach((throwableObject, throwableIndex) => {
+      this.level.enemies.forEach((enemy, enemyIndex) => {
         if(enemy.isColliding(throwableObject)) {
           console.log('Bubble Hit');
-          this.level.enemies.splice(index, 1);
+          this.throwableObjects.splice(throwableIndex, 1);
+          this.level.enemies.splice(enemyIndex, 1);
         }
       });
     });
