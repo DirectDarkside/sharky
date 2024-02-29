@@ -49,6 +49,16 @@ class Character extends MovableObject {
     "./assets/img/1.Sharkie/6.dead/1.Poisoned/11.png",
     "./assets/img/1.Sharkie/6.dead/1.Poisoned/12.png",
   ];
+  IMAGES_BUBBLE_ATTACK = [
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png",
+  ];
   world;
   swimming_sound = new Audio("./assets/audio/swimming_sound.mp3");
   movement = false;
@@ -59,6 +69,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_SWIMMING_MOVEMENT);
     this.loadImages(this.IMAGES_POISON_HURT);
     this.loadImages(this.IMAGES_DEAD);
+    this.loadImages(this.IMAGES_BUBBLE_ATTACK);
 
     this.animate();
   }
@@ -66,29 +77,7 @@ class Character extends MovableObject {
   animate() {
     setInterval(() => {
       this.swimming_sound.pause();
-      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-        this.moveRight();
-        this.otherDirection = false;
-        this.swimming_sound.play();
-      }
-      if (this.world.keyboard.LEFT && this.x > 0) {
-        this.moveLeft();
-        this.otherDirection = true;
-        this.swimming_sound.play();
-      }
-      if (this.world.keyboard.UP && this.y > -50) {
-        this.moveUp();
-        this.swimming_sound.play();
-      }
-      if (this.world.keyboard.DOWN && this.y < 355) {
-        this.moveDown();
-        this.swimming_sound.play();
-      }
-      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-        world.character.movement = true;
-      } else {
-        world.character.movement = false;
-      }
+      this.checkMovement();
       this.world.camera_x = -this.x + 100;
       this.world.statusBar.x = this.x - 80;
     }, 1000 / 60);
@@ -99,11 +88,47 @@ class Character extends MovableObject {
         this.playAnimation(this.IMAGES_DEAD);
       } else if(this.isHurt()) {
         this.playAnimation(this.IMAGES_POISON_HURT);
-      } else if (!this.movement) {
+      } else if(this.isAttack()) {
+        this.playAnimation(this.IMAGES_BUBBLE_ATTACK);
+      } else if(!this.movement) {
         this.playAnimation(this.IMAGES_SWIMMING);
-      } else if (this.movement) {
+      } else if(this.movement) {
         this.playAnimation(this.IMAGES_SWIMMING_MOVEMENT);
-      }
+      } 
     }, 150);
+  }
+
+  checkMovement() {
+    if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+      this.moveRight();
+      this.otherDirection = false;
+      this.swimming_sound.play();
+    }
+    if (this.world.keyboard.LEFT && this.x > 0) {
+      this.moveLeft();
+      this.otherDirection = true;
+      this.swimming_sound.play();
+    }
+    if (this.world.keyboard.UP && this.y > -50) {
+      this.moveUp();
+      this.swimming_sound.play();
+    }
+    if (this.world.keyboard.DOWN && this.y < 355) {
+      this.moveDown();
+      this.swimming_sound.play();
+    }
+    if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+      world.character.movement = true;
+    } else {
+      world.character.movement = false;
+    }
+  }
+
+  isAttack() {
+    if(this.world.keyboard.SPACE) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
