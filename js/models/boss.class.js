@@ -15,6 +15,13 @@ class Boss extends MovableObject {
         './assets/img/2.Enemy/3 Final Enemy/2.floating/13.png',
     ];
 
+    offset = {
+        top: 90,
+        left: 20,
+        right: 40,
+        bottom: 120
+    }
+
     constructor(x, y) {
         super().loadImage('./assets/img/2.Enemy/3 Final Enemy/2.floating/1.png');
         this.loadImages(this.IMAGES_SWIMMING);
