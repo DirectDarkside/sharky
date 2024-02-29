@@ -1,5 +1,12 @@
 class Pufferfish extends MovableObject {
 
+    offset = {
+        top: 0,
+        left: 0,
+        right: 5,
+        bottom: 20
+    }
+
     IMAGES_SWIMMING = [
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png',
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png',
@@ -22,7 +29,7 @@ class Pufferfish extends MovableObject {
 
     animate() {
         setInterval(() => {
-            this.moveLeft();
+            // this.moveLeft();
         }, 0.250);
         setInterval(() => {
             this.playAnimation(this.IMAGES_SWIMMING);

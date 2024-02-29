@@ -77,6 +77,10 @@ class World {
     mo.draw(this.ctx);
     mo.drawFrame(this.ctx);
 
+    if(mo.hitbox) {
+      mo.hitbox = mo.setHitbox();
+    }
+    
     if (mo.otherDirection) {
       this.flipIMageBack(mo);
     }

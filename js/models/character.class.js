@@ -1,6 +1,13 @@
 class Character extends MovableObject {
   speed = 8;
 
+  offset = {
+    top: 60,
+    left: 25,
+    right: 45,
+    bottom: 80
+  }
+
   IMAGES_SWIMMING = [
     "./assets/img/1.Sharkie/1.IDLE/1.png",
     "./assets/img/1.Sharkie/1.IDLE/2.png",
