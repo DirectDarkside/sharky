@@ -66,6 +66,14 @@ class Character extends MovableObject {
     "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png",
     "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png",
   ];
+  IMAGES_SLAP_ATTACK = [
+    "./assets/img/1.Sharkie/4.Attack/Fin slap/1.png",
+    "./assets/img/1.Sharkie/4.Attack/Fin slap/4.png",
+    "./assets/img/1.Sharkie/4.Attack/Fin slap/5.png",
+    "./assets/img/1.Sharkie/4.Attack/Fin slap/6.png",
+    "./assets/img/1.Sharkie/4.Attack/Fin slap/7.png",
+    "./assets/img/1.Sharkie/4.Attack/Fin slap/8.png",
+  ];
   world;
   swimming_sound = new Audio("./assets/audio/swimming_sound.mp3");
   movement = false;
@@ -77,6 +85,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_POISON_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_BUBBLE_ATTACK);
+    this.loadImages(this.IMAGES_SLAP_ATTACK);
 
     this.animate();
   }
@@ -127,7 +136,7 @@ class Character extends MovableObject {
     } else if(this.isHurt()) {
       this.playAnimation(this.IMAGES_POISON_HURT);
     } else if(this.isAttack()) {
-      this.playAnimation(this.IMAGES_BUBBLE_ATTACK);
+      this.checkAttack();
     } else if(!this.movement) {
       this.playAnimation(this.IMAGES_SWIMMING);
     } else if(this.movement) {
@@ -135,8 +144,16 @@ class Character extends MovableObject {
     }
   }
 
+  checkAttack() {
+    if(this.world.keyboard.D) {
+      this.playAnimation(this.IMAGES_SLAP_ATTACK);
+    } else if(this.world.keyboard.SPACE) {
+      this.playAnimation(this.IMAGES_BUBBLE_ATTACK);
+    }
+  }
+
   isAttack() {
-    if(this.world.keyboard.SPACE) {
+    if(this.world.keyboard.SPACE || this.world.keyboard.D) {
       return true;
     } else {
       return false;

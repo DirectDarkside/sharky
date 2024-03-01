@@ -29,7 +29,7 @@ class World {
 
     setInterval(() => {
       this.checkHitCollision();
-    }, 250);
+    }, 100);
   }
 
   checkThrowObjects() {
@@ -45,12 +45,20 @@ class World {
   }
 
   checkCollisions() {
-    this.level.enemies.forEach((enemy) => {
+    this.level.enemies.forEach((enemy, index) => {
       if(this.character.isColliding(enemy)) {
           console.log('Hit');
           this.character.hit();
           this.statusBar.setPercentage(this.character.energy);
           console.log(this.character.energy);
+      } else if(this.character.isSlapColliding(enemy)) {
+        if(this.keyboard.D && enemy instanceof Pufferfish) {
+          enemy.kill();
+          enemy.deadAnimation();
+          setTimeout(() => {
+            this.level.enemies.splice(index, 1);
+          }, 3500);
+        }
       }
   });
   }

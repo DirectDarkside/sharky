@@ -7,11 +7,11 @@ const enemies = [
 ];
 
 const items = [
-    new Coin(),
-    new Coin(),
-    new Coin(),
-    new Coin(),
-    new Coin()
+    // new Coin(),
+    // new Coin(),
+    // new Coin(),
+    // new Coin(),
+    // new Coin()
 ];
 
 const backgroundObjects = [

@@ -49,6 +49,18 @@ class MovableObject extends DrawableObject {
     );
   }
 
+  isSlapColliding(mo) {
+    return (
+      this.x + this.width > mo.x &&
+      this.y + this.height > mo.y &&
+      this.x < mo.x &&
+      this.y < mo.y + mo.height ||
+      this.x < mo.x + mo.width && 
+      this.y < mo.y + mo.height &&
+      this.x > mo.x
+    );
+  }
+
   hit() {
     this.energy -= 20;
     if (this.energy < 0) {
