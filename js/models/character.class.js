@@ -1,5 +1,7 @@
 class Character extends MovableObject {
   speed = 8;
+  wait = 0;
+  currentIndex = 0;
 
   offset = {
     top: 60,
@@ -35,6 +37,28 @@ class Character extends MovableObject {
     "./assets/img/1.Sharkie/3.Swim/4.png",
     "./assets/img/1.Sharkie/3.Swim/5.png",
     "./assets/img/1.Sharkie/3.Swim/6.png",
+  ];
+  IMAGES_SLEEP = [
+    "./assets/img/1.Sharkie/2.Long_IDLE/i1.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i2.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i3.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i4.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i5.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i6.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i7.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i8.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i9.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i10.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i11.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i12.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i13.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i14.png",
+  ];
+  IMAGES_ONLY_SLEEP = [
+    "./assets/img/1.Sharkie/2.Long_IDLE/i11.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i12.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i13.png",
+    "./assets/img/1.Sharkie/2.Long_IDLE/i14.png",
   ];
   IMAGES_POISON_HURT = [
     "./assets/img/1.Sharkie/5.Hurt/1.Poisoned/1.png",
@@ -81,6 +105,8 @@ class Character extends MovableObject {
   constructor() {
     super().loadImage("./assets/img/1.Sharkie/1.IDLE/1.png");
     this.loadImages(this.IMAGES_SWIMMING);
+    this.loadImages(this.IMAGES_SLEEP);
+    this.loadImages(this.IMAGES_ONLY_SLEEP);
     this.loadImages(this.IMAGES_SWIMMING_MOVEMENT);
     this.loadImages(this.IMAGES_POISON_HURT);
     this.loadImages(this.IMAGES_DEAD);
@@ -109,19 +135,23 @@ class Character extends MovableObject {
       this.moveRight();
       this.otherDirection = false;
       this.swimming_sound.play();
+      this.resetSleepAnimation();
     }
     if (this.world.keyboard.LEFT && this.x > 0) {
       this.moveLeft();
       this.otherDirection = true;
       this.swimming_sound.play();
+      this.resetSleepAnimation();
     }
     if (this.world.keyboard.UP && this.y > -50) {
       this.moveUp();
       this.swimming_sound.play();
+      this.resetSleepAnimation();
     }
     if (this.world.keyboard.DOWN && this.y < 355) {
       this.moveDown();
       this.swimming_sound.play();
+      this.resetSleepAnimation();
     }
     if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
       world.character.movement = true;
@@ -137,6 +167,8 @@ class Character extends MovableObject {
       this.playAnimation(this.IMAGES_POISON_HURT);
     } else if(this.isAttack()) {
       this.checkAttack();
+    } else if(this.isWaiting()) {
+      this.playSleepAnimation();
     } else if(!this.movement) {
       this.playAnimation(this.IMAGES_SWIMMING);
     } else if(this.movement) {
@@ -149,6 +181,30 @@ class Character extends MovableObject {
       this.playAnimation(this.IMAGES_SLAP_ATTACK);
     } else if(this.world.keyboard.SPACE) {
       this.playAnimation(this.IMAGES_BUBBLE_ATTACK);
+    }
+  }
+
+  playSleepAnimation() {
+    if(this.currentIndex >= this.IMAGES_SLEEP.length) {
+      this.playAnimation(this.IMAGES_ONLY_SLEEP);
+    } else {
+      let index = this.currentIndex;
+      this.img = this.imageCache[this.IMAGES_SLEEP[index]];
+      this.currentIndex++;
+    }
+  }
+
+  resetSleepAnimation() {
+    this.currentIndex = 0;
+    this.wait = 0;
+  }
+
+  isWaiting() {
+    if(this.wait >= 50) {
+      return true;
+    } else {
+      this.wait++;
+      return false;
     }
   }
 
