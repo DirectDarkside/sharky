@@ -1,6 +1,7 @@
 class Pufferfish extends MovableObject {
 
     energy = 100;
+    collision = false;
 
     offset = {
         top: 0,
@@ -21,12 +22,20 @@ class Pufferfish extends MovableObject {
         "./assets/img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 2 (can animate by going down to the floor after the Fin Slap attack).png",
         "./assets/img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 3 (can animate by going down to the floor after the Fin Slap attack).png",
     ];
+    IMAGES_ATTACK = [
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition1.png",
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition2.png",
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition3.png",
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition4.png",
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition5.png",
+    ];
     
 
     constructor(x, y) {
         super().loadImage('./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
         this.loadImages(this.IMAGES_SWIMMING);
         this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_ATTACK);
         this.height = 80;
         this.width = 80;
         this.x = 200 + Math.random() * 400;
@@ -42,6 +51,8 @@ class Pufferfish extends MovableObject {
         setInterval(() => {
             if(this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+            } if(this.collision) {
+                this.playAnimation(this.IMAGES_ATTACK);
             } else {
                 this.playAnimation(this.IMAGES_SWIMMING);
             }

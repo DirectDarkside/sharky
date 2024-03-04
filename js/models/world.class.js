@@ -29,6 +29,7 @@ class World {
 
     setInterval(() => {
       this.checkHitCollision();
+      this.checkEnemyCollision();
     }, 100);
   }
 
@@ -72,6 +73,16 @@ class World {
           this.level.enemies.splice(enemyIndex, 1);
         }
       });
+    });
+  }
+
+  checkEnemyCollision() {
+    this.level.enemies.forEach((enemy) => {
+      if(enemy.isColliding(this.character)) {
+        enemy.collision = true;
+      } else {
+        enemy.collision = false;
+      }
     });
   }
 
