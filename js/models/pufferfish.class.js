@@ -51,7 +51,7 @@ class Pufferfish extends MovableObject {
         setInterval(() => {
             if(this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-            } if(this.collision) {
+            } else if(this.collision) {
                 this.playAnimation(this.IMAGES_ATTACK);
             } else {
                 this.playAnimation(this.IMAGES_SWIMMING);
