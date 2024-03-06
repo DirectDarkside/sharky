@@ -218,6 +218,7 @@ class Character extends MovableObject {
 
   isAttack() {
     if(this.world.keyboard.SPACE || this.world.keyboard.D) {
+      this.resetSleepAnimation();
       return true;
     } else {
       return false;
