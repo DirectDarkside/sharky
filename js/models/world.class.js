@@ -115,12 +115,12 @@ class World {
 
   checkHitCollision() {
     this.throwableObjects.forEach((throwableObject, throwableIndex) => {
-      this.level.enemies.forEach((enemy, enemyIndex) => {
+      this.level.enemies.forEach((enemy) => {
         if(enemy.isColliding(throwableObject)) {
           if(enemy instanceof Jellyfish) {
             enemy.kill();
             setTimeout(() => {
-              this.level.enemies.splice(enemyIndex, 1);
+              this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
             }, 4500);
           }
           console.log('Bubble Hit');
