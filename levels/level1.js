@@ -11,8 +11,8 @@ const items = [
     new Coin(),
     new Coin(),
     new Coin(),
-    // new Coin(),
-    // new Coin()
+    new Coin(),
+    new Coin()
 ];
 
 const backgroundObjects = [

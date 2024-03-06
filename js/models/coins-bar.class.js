@@ -1,5 +1,7 @@
 class CoinsBar extends DrawableObject{
 
+    progress = 0;
+
     IMAGES = [
         "./assets/img/4. Marcadores/green/Coin/0_  copia 4.png",
         "./assets/img/4. Marcadores/green/Coin/20_  copia 2.png",
@@ -15,6 +17,6 @@ class CoinsBar extends DrawableObject{
         this.y = 60;
         this.width = 200;
         this.height = 60;
-        this.setPercentage(0);
+        this.setPercentage(this.progress);
     }
 }
