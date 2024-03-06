@@ -8,6 +8,7 @@ class World {
   statusBar = new StatusBar();
   coinsBar = new CoinsBar();
   throwableObjects = [];
+  bossIntroduce = false;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -31,8 +32,23 @@ class World {
     setInterval(() => {
       this.checkHitCollision();
       this.checkEnemyCollision();
+      this.checkEndbossSpawn();
     }, 100);
   }
+
+  checkEndbossSpawn() {
+    if(this.character.x > 300 && !this.bossIntroduce) {
+      this.level.enemies.forEach(enemy => {
+        if(enemy instanceof Boss) {
+          enemy.counter = 0;
+          enemy.hadFirstContact = false;
+          enemy.spawn = true;
+          this.bossIntroduce = true;
+        }
+      });
+    }
+  }
+
 
   checkThrowObjects() {
     if(this.keyboard.SPACE) {

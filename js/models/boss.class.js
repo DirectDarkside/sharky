@@ -1,4 +1,17 @@
 class Boss extends MovableObject {
+
+    IMAGES_INTRODUCE = [
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/1.png",
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/2.png",
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/3.png",
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/4.png",
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/5.png",
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/6.png",
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/7.png",
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/8.png",
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/9.png",
+        "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/10.png",
+    ];
     IMAGES_SWIMMING = [
         './assets/img/2.Enemy/3 Final Enemy/2.floating/1.png',
         './assets/img/2.Enemy/3 Final Enemy/2.floating/2.png',
@@ -14,6 +27,9 @@ class Boss extends MovableObject {
         './assets/img/2.Enemy/3 Final Enemy/2.floating/12.png',
         './assets/img/2.Enemy/3 Final Enemy/2.floating/13.png',
     ];
+    hadFirstContact = false;
+    spawn = false;
+    counter = 0;
 
     offset = {
         top: 90,
@@ -25,6 +41,7 @@ class Boss extends MovableObject {
     constructor(x, y) {
         super().loadImage('./assets/img/2.Enemy/3 Final Enemy/2.floating/1.png');
         this.loadImages(this.IMAGES_SWIMMING);
+        this.loadImages(this.IMAGES_INTRODUCE);
         this.height = 300;
         this.width = 400;
         this.x = x;
@@ -35,7 +52,20 @@ class Boss extends MovableObject {
 
     animate() {
         setInterval(() => {
-            this.playAnimation(this.IMAGES_SWIMMING);
+            if(this.spawn) {
+                this.x = 700;
+                this.y = 100;
+                if(!this.hadFirstContact) {
+                    if(this.counter < 10) {
+                        this.playAnimation(this.IMAGES_INTRODUCE);
+                    } else {
+                        this.hadFirstContact = true
+                    }
+                    this.counter++;
+                } else {
+                    this.playAnimation(this.IMAGES_SWIMMING);
+                }
+            }
         }, 150);
     }
 }
