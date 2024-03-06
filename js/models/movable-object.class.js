@@ -45,8 +45,16 @@ class MovableObject extends DrawableObject {
         this.hitbox.right >= mo.hitbox.left &&
         this.hitbox.bottom >= mo.hitbox.top &&
         this.hitbox.left <= mo.hitbox.right &&
-        this.hitbox.top <= mo.hitbox.bottom             
-    );
+        this.hitbox.top <= mo.hitbox.bottom  ||
+        (this.y + this.height - this.offset.bottom > mo.y + mo.offset.top && 
+        this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom) &&
+        (this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+          this.x + this.offset.left < mo.x + mo.width - mo.offset.right)  ||
+          (this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom &&
+            this.y + this.offset.bottom > mo.y + mo.offset.top) &&
+            (this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+              this.x + this.offset.left < mo.x + mo.width - mo.offset.right)
+    );    
   }
 
   isSlapColliding(mo) {
