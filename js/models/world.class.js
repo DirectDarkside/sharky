@@ -6,6 +6,7 @@ class World {
   keyboard;
   camera_x = 0;
   statusBar = new StatusBar();
+  coinsBar = new CoinsBar();
   throwableObjects = [];
 
   constructor(canvas, keyboard) {
@@ -100,6 +101,7 @@ class World {
     this.addObjectsToMap(this.level.items);
     this.addObjectsToMap(this.throwableObjects);
     this.addToMap(this.statusBar);
+    this.addToMap(this.coinsBar);
     this.addToMap(this.character);
     this.ctx.translate(-this.camera_x, 0);
 
