@@ -49,26 +49,34 @@ class World {
   checkCollisions() {
     this.level.enemies.forEach((enemy, index) => {
       if(this.character.isColliding(enemy)) {
-          console.log('Hit');
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
-          console.log(this.character.energy);
-          if(enemy instanceof Jellyfish) {
-            this.character.jellyfish = true;
-            setTimeout(() => {
-              this.character.jellyfish = false;
-            }, 1000);
-          }
+          this.checkIfCollision(enemy);
       } else if(this.character.isSlapColliding(enemy)) {
         if(this.keyboard.D && enemy instanceof Pufferfish) {
-          enemy.kill();
-          enemy.deadAnimation();
-          setTimeout(() => {
-            this.level.enemies.splice(index, 1);
-          }, 3500);
+          this.checkHitPufferfish(enemy, index);
         }
       }
   });
+  }
+
+  checkIfCollision(enemy) {
+    console.log('Hit');
+    this.character.hit();
+    this.statusBar.setPercentage(this.character.energy);
+    console.log(this.character.energy);
+    if(enemy instanceof Jellyfish) {
+      this.character.jellyfish = true;
+      setTimeout(() => {
+        this.character.jellyfish = false;
+      }, 1000);
+    }
+  }
+
+  checkHitPufferfish(enemy, index) {
+    enemy.kill();
+    enemy.deadAnimation();
+    setTimeout(() => {
+      this.level.enemies.splice(index, 1);
+    }, 3500);
   }
 
   checkHitCollision() {
@@ -104,8 +112,6 @@ class World {
     this.addToMap(this.coinsBar);
     this.addToMap(this.character);
     this.ctx.translate(-this.camera_x, 0);
-
-    //Draw() wird immer wieder aufgerufen
     requestAnimationFrame(() => {
       this.draw();
     });
