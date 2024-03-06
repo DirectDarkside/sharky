@@ -4,7 +4,7 @@ const enemies = [
     // new Pufferfish(400, 350),
     // new Jellyfish(),
 
-    new Boss(5000, 1000),
+    new Boss(-500, -100),
 ];
 
 const items = [
