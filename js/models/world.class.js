@@ -54,9 +54,12 @@ class World {
   checkItemCollision() {
     this.level.items.forEach((item, index) => {
       if(this.character.isColliding(item)) {
-        this.coinsBar.progress += 20;
-        this.coinsBar.setPercentage(this.coinsBar.progress);
-        this.level.items.splice(index, 1);
+        if(item instanceof Coin) {
+          item.takeCoin.play();
+          this.coinsBar.progress += 20;
+          this.coinsBar.setPercentage(this.coinsBar.progress);
+          this.level.items.splice(index, 1);
+        }
       }
     });
   }
