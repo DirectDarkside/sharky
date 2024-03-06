@@ -2,17 +2,17 @@ const enemies = [
     // new Pufferfish(400, 100),
     // new Pufferfish(400, 200),
     // new Pufferfish(400, 350),
-    // new Jellyfish(),
+    new Jellyfish(),
 
-    new Boss(600, 100),
+    // new Boss(600, 100),
 ];
 
 const items = [
-    new Coin(),
-    new Coin(),
-    new Coin(),
-    new Coin(),
-    new Coin()
+    // new Coin(),
+    // new Coin(),
+    // new Coin(),
+    // new Coin(),
+    // new Coin()
 ];
 
 const backgroundObjects = [

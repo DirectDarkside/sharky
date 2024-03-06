@@ -1,7 +1,6 @@
 class CoinsBar extends DrawableObject{
 
     progress = 0;
-
     IMAGES = [
         "./assets/img/4. Marcadores/green/Coin/0_  copia 4.png",
         "./assets/img/4. Marcadores/green/Coin/20_  copia 2.png",

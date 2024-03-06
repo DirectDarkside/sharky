@@ -101,9 +101,15 @@ class World {
     this.throwableObjects.forEach((throwableObject, throwableIndex) => {
       this.level.enemies.forEach((enemy, enemyIndex) => {
         if(enemy.isColliding(throwableObject)) {
+          if(enemy instanceof Jellyfish) {
+            enemy.kill();
+            setTimeout(() => {
+              this.level.enemies.splice(enemyIndex, 1);
+            }, 4500);
+          }
           console.log('Bubble Hit');
           this.throwableObjects.splice(throwableIndex, 1);
-          this.level.enemies.splice(enemyIndex, 1);
+          
         }
       });
     });
