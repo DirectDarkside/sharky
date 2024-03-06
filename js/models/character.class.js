@@ -2,6 +2,8 @@ class Character extends MovableObject {
   speed = 8;
   wait = 0;
   currentIndex = 0;
+  jellyfish = false;
+  pufferfish = false;
 
   offset = {
     top: 60,
@@ -66,6 +68,11 @@ class Character extends MovableObject {
     "./assets/img/1.Sharkie/5.Hurt/1.Poisoned/3.png",
     "./assets/img/1.Sharkie/5.Hurt/1.Poisoned/4.png",
   ];
+  IMAGES_ELECTRIC_SHOCK = [
+    "./assets/img/1.Sharkie/5.Hurt/2.Electric shock/1.png",
+    "./assets/img/1.Sharkie/5.Hurt/2.Electric shock/2.png",
+    "./assets/img/1.Sharkie/5.Hurt/2.Electric shock/3.png",
+  ];
   IMAGES_DEAD = [
     "./assets/img/1.Sharkie/6.dead/1.Poisoned/1.png",
     "./assets/img/1.Sharkie/6.dead/1.Poisoned/2.png",
@@ -109,6 +116,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_ONLY_SLEEP);
     this.loadImages(this.IMAGES_SWIMMING_MOVEMENT);
     this.loadImages(this.IMAGES_POISON_HURT);
+    this.loadImages(this.IMAGES_ELECTRIC_SHOCK);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_BUBBLE_ATTACK);
     this.loadImages(this.IMAGES_SLAP_ATTACK);
@@ -164,7 +172,7 @@ class Character extends MovableObject {
     if (this.isDead()) {
       this.playAnimation(this.IMAGES_DEAD);
     } else if(this.isHurt()) {
-      this.playAnimation(this.IMAGES_POISON_HURT);
+      this.jellyfish ? this.playAnimation(this.IMAGES_ELECTRIC_SHOCK) : this.playAnimation(this.IMAGES_POISON_HURT);
     } else if(this.isAttack()) {
       this.checkAttack();
     } else if(this.isWaiting()) {

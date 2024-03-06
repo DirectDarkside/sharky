@@ -30,7 +30,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if(this instanceof Character || this instanceof Pufferfish || this instanceof Boss || this instanceof Coin || this instanceof ThrowableObject) {
+        if(this instanceof Character || this instanceof Pufferfish || this instanceof Boss || this instanceof Coin || this instanceof ThrowableObject || this instanceof Jellyfish) {
             ctx.beginPath();
             ctx.lineWidth = "3";
             ctx.strokeStyle = "blue";

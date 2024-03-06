@@ -1,7 +1,9 @@
 const enemies = [
-    new Pufferfish(400, 100),
-    new Pufferfish(400, 200),
-    new Pufferfish(400, 350),
+    // new Pufferfish(400, 100),
+    // new Pufferfish(400, 200),
+    // new Pufferfish(400, 350),
+
+    new Jellyfish(),
 
     new Boss(600, 100),
 ];

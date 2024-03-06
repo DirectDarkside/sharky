@@ -11,18 +11,18 @@ class Pufferfish extends MovableObject {
     }
 
     IMAGES_SWIMMING = [
-        './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png',
-        './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png',
-        './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim3.png',
-        './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim4.png',
-        './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim5.png',
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png",
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png",
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim3.png",
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim4.png",
+        "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim5.png",
     ];
     IMAGES_DEAD = [
         "./assets/img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png",
         "./assets/img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 2 (can animate by going down to the floor after the Fin Slap attack).png",
         "./assets/img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 3 (can animate by going down to the floor after the Fin Slap attack).png",
     ];
-    IMAGES_ATTACK = [
+    IMAGES_ATTACK_POISON = [
         "./assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition1.png",
         "./assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition2.png",
         "./assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition3.png",
@@ -35,7 +35,7 @@ class Pufferfish extends MovableObject {
         super().loadImage('./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
         this.loadImages(this.IMAGES_SWIMMING);
         this.loadImages(this.IMAGES_DEAD);
-        this.loadImages(this.IMAGES_ATTACK);
+        this.loadImages(this.IMAGES_ATTACK_POISON);
         this.height = 80;
         this.width = 80;
         this.x = 200 + Math.random() * 400;
@@ -52,7 +52,7 @@ class Pufferfish extends MovableObject {
             if(this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
             } else if(this.collision) {
-                this.playAnimation(this.IMAGES_ATTACK);
+                this.playAnimation(this.IMAGES_ATTACK_POISON);
             } else {
                 this.playAnimation(this.IMAGES_SWIMMING);
             }

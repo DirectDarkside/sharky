@@ -52,6 +52,12 @@ class World {
           this.character.hit();
           this.statusBar.setPercentage(this.character.energy);
           console.log(this.character.energy);
+          if(enemy instanceof Jellyfish) {
+            this.character.jellyfish = true;
+            setTimeout(() => {
+              this.character.jellyfish = false;
+            }, 1000);
+          }
       } else if(this.character.isSlapColliding(enemy)) {
         if(this.keyboard.D && enemy instanceof Pufferfish) {
           enemy.kill();
