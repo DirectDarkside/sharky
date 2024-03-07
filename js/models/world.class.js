@@ -7,6 +7,7 @@ class World {
   camera_x = 0;
   statusBar = new StatusBar();
   coinsBar = new CoinsBar();
+  poisonBar = new PoisonBar();
   throwableObjects = [];
   bossIntroduce = false;
 
@@ -156,6 +157,7 @@ class World {
     this.addObjectsToMap(this.throwableObjects);
     this.addToMap(this.statusBar);
     this.addToMap(this.coinsBar);
+    this.addToMap(this.poisonBar);
     this.addToMap(this.character);
     this.ctx.translate(-this.camera_x, 0);
     requestAnimationFrame(() => {
