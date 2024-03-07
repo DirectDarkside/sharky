@@ -12,7 +12,9 @@ const items = [
     new Coin(),
     new Coin(),
     new Coin(),
-    new Coin()
+    new Coin(),
+
+    new Poison()
 ];
 
 const backgroundObjects = [
