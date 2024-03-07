@@ -129,7 +129,7 @@ class World {
     enemy.kill();
     enemy.deadAnimation();
     setTimeout(() => {
-      this.level.enemies.splice(index, 1);
+      this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
     }, 3500);
   }
 
