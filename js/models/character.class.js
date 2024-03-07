@@ -131,6 +131,7 @@ class Character extends MovableObject {
       this.world.camera_x = -this.x + 100;
       this.world.statusBar.x = this.x - 80;
       this.world.coinsBar.x = this.x - 80;
+      this.world.poisonBar.x = this.x - 80;
     }, 1000 / 60);
 
     setInterval(() => {

@@ -76,6 +76,10 @@ class World {
           this.coinsBar.progress += 20;
           this.coinsBar.setPercentage(this.coinsBar.progress);
           this.level.items.splice(index, 1);
+        } else if(item instanceof Poison) {
+          this.poisonBar.progress += 20;
+          this.poisonBar.setPercentage(this.poisonBar.progress);
+          this.level.items.splice(index, 1);
         }
       }
     });
