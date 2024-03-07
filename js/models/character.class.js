@@ -97,6 +97,16 @@ class Character extends MovableObject {
     "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png",
     "./assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png",
   ];
+  IMAGES_POISON_BUBBLE_ATTACK = [
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
+    "./assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png",
+  ];
   IMAGES_SLAP_ATTACK = [
     "./assets/img/1.Sharkie/4.Attack/Fin slap/1.png",
     "./assets/img/1.Sharkie/4.Attack/Fin slap/4.png",
@@ -119,6 +129,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_ELECTRIC_SHOCK);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_BUBBLE_ATTACK);
+    this.loadImages(this.IMAGES_POISON_BUBBLE_ATTACK);
     this.loadImages(this.IMAGES_SLAP_ATTACK);
 
     this.animate();
@@ -190,7 +201,11 @@ class Character extends MovableObject {
     if(this.world.keyboard.D) {
       this.playAnimation(this.IMAGES_SLAP_ATTACK);
     } else if(this.world.keyboard.SPACE) {
-      this.playAnimation(this.IMAGES_BUBBLE_ATTACK);
+      if(this.world.poisonBar.progress == 100) {
+        this.playAnimation(this.IMAGES_POISON_BUBBLE_ATTACK);
+      } else {
+        this.playAnimation(this.IMAGES_BUBBLE_ATTACK);
+      }
     }
   }
 

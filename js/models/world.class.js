@@ -55,9 +55,15 @@ class World {
     if(this.keyboard.SPACE) {
       if(this.character.otherDirection) {
         let bubble = new ThrowableObject(this.character.hitbox.left, this.character.hitbox.top + 20, this.character.otherDirection);
+        if(this.poisonBar.progress == 100) {
+          bubble.img.src = './assets/img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png';
+        }
         this.throwableObjects.push(bubble);
       } else {
         let bubble = new ThrowableObject(this.character.hitbox.right, this.character.hitbox.top + 20, this.character.otherDirection);
+        if(this.poisonBar.progress == 100) {
+          bubble.img.src = './assets/img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png';
+        }
         this.throwableObjects.push(bubble); 
       }
     }
@@ -124,13 +130,15 @@ class World {
         if(enemy.isColliding(throwableObject)) {
           if(enemy instanceof Jellyfish) {
             enemy.kill();
+            console.log('Bubble Hit');
             setTimeout(() => {
               this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
             }, 4500);
           }
-          console.log('Bubble Hit');
-          this.throwableObjects.splice(throwableIndex, 1);
-          
+          if(enemy instanceof Boss && this.poisonBar.progress == 100) {
+            console.log('Boss hit');
+          }
+          this.throwableObjects.splice(throwableIndex, 1); 
         }
       });
     });
