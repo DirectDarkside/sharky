@@ -135,8 +135,14 @@ class World {
     this.level.enemies.forEach((enemy) => {
       if(enemy.isColliding(this.character)) {
         enemy.collision = true;
+        if(enemy instanceof Boss) {
+          enemy.attack = true
+        } 
       } else {
         enemy.collision = false;
+        if(enemy instanceof Boss) {
+          enemy.attack = false
+        }
       }
     });
   }

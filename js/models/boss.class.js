@@ -27,8 +27,17 @@ class Boss extends MovableObject {
         './assets/img/2.Enemy/3 Final Enemy/2.floating/12.png',
         './assets/img/2.Enemy/3 Final Enemy/2.floating/13.png',
     ];
+    IMAGES_ATTACK = [
+        "./assets/img/2.Enemy/3 Final Enemy/Attack/1.png",
+        "./assets/img/2.Enemy/3 Final Enemy/Attack/2.png",
+        "./assets/img/2.Enemy/3 Final Enemy/Attack/3.png",
+        "./assets/img/2.Enemy/3 Final Enemy/Attack/4.png",
+        "./assets/img/2.Enemy/3 Final Enemy/Attack/5.png",
+        "./assets/img/2.Enemy/3 Final Enemy/Attack/6.png",
+    ];
     hadFirstContact = false;
     spawn = false;
+    attack = false;
     counter = 0;
 
     offset = {
@@ -42,6 +51,7 @@ class Boss extends MovableObject {
         super().loadImage('./assets/img/2.Enemy/3 Final Enemy/2.floating/1.png');
         this.loadImages(this.IMAGES_SWIMMING);
         this.loadImages(this.IMAGES_INTRODUCE);
+        this.loadImages(this.IMAGES_ATTACK);
         this.height = 300;
         this.width = 400;
         this.x = x;
@@ -63,7 +73,11 @@ class Boss extends MovableObject {
                     }
                     this.counter++;
                 } else {
-                    this.playAnimation(this.IMAGES_SWIMMING);
+                    if(this.attack) {
+                        this.playAnimation(this.IMAGES_ATTACK);
+                    } else {
+                        this.playAnimation(this.IMAGES_SWIMMING);
+                    }
                 }
             }
         }, 150);
