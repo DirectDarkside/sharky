@@ -1,6 +1,6 @@
 class PoisonBar extends DrawableObject {
 
-    progress = 0;
+    progress = 100;
     IMAGES = [
         "./assets/img/4. Marcadores/green/poisoned bubbles/0_ copia 2.png",
         "./assets/img/4. Marcadores/green/poisoned bubbles/20_ copia 3.png",
