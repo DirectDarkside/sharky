@@ -14,6 +14,51 @@ canvas {
     height: 100%;
 }
 
+#canvas_container {
+    position: relative;
+}
+
+#up_button {
+    background-image: url('./assets/img/buttons/up_button.png');
+}
+
+#left_button {
+    background-image: url('./assets/img/buttons/left_button.png');
+}
+
+#down_button {
+    background-image: url('./assets/img/buttons/down_button.png');
+}
+
+#right_button {
+    background-image: url('./assets/img/buttons/right_button.png');
+}
+
+.movement_button {
+    background-position: center;
+}
+
+.btn_container {
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn_container button {
+    height: 50px;
+    width: 50px;
+    border-radius: 24px;
+    opacity: 0.6;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+}
+
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;

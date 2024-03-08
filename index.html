@@ -10,10 +10,19 @@
 <body onload="init()">
 
     <h1>Sharky</h1>
-
     <div id="canvas_container">
         <canvas id="canvas" width="720" height="480">
         </canvas>
+        <div class="btn_container">
+            <div class="top">
+                <button id="up_button" class="movement_button"></button>
+            </div>
+            <div>
+                <button id="left_button" class="movement_button"></button>
+                <button id="down_button" class="movement_button"></button>
+                <button id="right_button" class="movement_button"></button>
+            </div>
+        </div>
     </div>
     
     <script src="./js/models/drawable-object.class.js"></script>

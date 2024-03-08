@@ -41,7 +41,7 @@ class World {
   checkPlayerPosition() {
     this.level.enemies.forEach(enemy => {
       if(enemy instanceof Boss) {
-        if(this.character.x < enemy.x) {
+        if(this.character.x < enemy.x + 70) {
           enemy.goLeft = true;
           enemy.goRight = false;
           enemy.otherDirection = false;

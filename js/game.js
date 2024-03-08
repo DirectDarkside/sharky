@@ -5,66 +5,101 @@ let keyboard = new Keyboard();
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-    
-
-    console.log('My Character is', world.character);
+    keysBindAction();
+    bindTouchAction();
 }
 
-document.addEventListener('keydown', (event) => {
+function keysBindAction () {
+    document.addEventListener('keydown', (event) => {
     
-    if(event.keyCode == 39) {
-        keyboard.RIGHT = true;
-    }
+        if(event.keyCode == 39) {
+            keyboard.RIGHT = true;
+        }
+    
+        if(event.keyCode == 37) {
+            keyboard.LEFT = true;
+        }
+    
+        if(event.keyCode == 38) {
+            keyboard.UP = true;
+        }
+    
+        if(event.keyCode == 40) {
+            keyboard.DOWN = true;
+        }
+    
+        if(event.keyCode == 32) {
+            keyboard.SPACE = true;
+        }
+    
+        if(event.keyCode == 68) {
+            keyboard.D = true;
+        }
+        
+    });   
+    document.addEventListener('keyup', (event) => {
+        
+        if(event.keyCode == 39) {
+            keyboard.RIGHT = false;
+        }
+    
+        if(event.keyCode == 37) {
+            keyboard.LEFT = false;
+        }
+    
+        if(event.keyCode == 38) {
+            keyboard.UP = false;
+        }
+    
+        if(event.keyCode == 40) {
+            keyboard.DOWN = false;
+        }
+    
+        if(event.keyCode == 32) {
+            keyboard.SPACE = false;
+        }
+    
+        if(event.keyCode == 68) {
+            keyboard.D = false;
+        }
+        
+    });
+}
 
-    if(event.keyCode == 37) {
-        keyboard.LEFT = true;
-    }
-
-    if(event.keyCode == 38) {
+function bindTouchAction() {
+    document.getElementById('up_button').addEventListener('touchstart', (e) => {
+        e.preventDefault();
         keyboard.UP = true;
-    }
-
-    if(event.keyCode == 40) {
-        keyboard.DOWN = true;
-    }
-
-    if(event.keyCode == 32) {
-        keyboard.SPACE = true;
-    }
-
-    if(event.keyCode == 68) {
-        keyboard.D = true;
-    }
-    
-});
-
-document.addEventListener('keyup', (event) => {
-    
-    if(event.keyCode == 39) {
-        keyboard.RIGHT = false;
-    }
-
-    if(event.keyCode == 37) {
-        keyboard.LEFT = false;
-    }
-
-    if(event.keyCode == 38) {
+    });
+    document.getElementById('up_button').addEventListener('touchend', (e) => {
+        e.preventDefault();
         keyboard.UP = false;
-    }
-
-    if(event.keyCode == 40) {
+    });
+    document.getElementById('left_button').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.LEFT = true;
+    });
+    document.getElementById('left_button').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.LEFT = false;
+    });
+    document.getElementById('down_button').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.DOWN = true;
+    });
+    document.getElementById('down_button').addEventListener('touchend', (e) => {
+        e.preventDefault();
         keyboard.DOWN = false;
-    }
-
-    if(event.keyCode == 32) {
-        keyboard.SPACE = false;
-    }
-
-    if(event.keyCode == 68) {
-        keyboard.D = false;
-    }
-    
-});
+    });
+    document.getElementById('right_button').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.RIGHT = true;
+    });
+    document.getElementById('right_button').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.RIGHT = false;
+    });
+}
 
 function fullscreen() {
     const fullscreen = document.getElementById('canvas_container');

@@ -1,8 +1,5 @@
 class Boss extends MovableObject {
 
-  goLeft = true;
-  goRight = false;
-
   IMAGES_INTRODUCE = [
     "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/1.png",
     "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/2.png",
@@ -56,6 +53,8 @@ class Boss extends MovableObject {
   spawn = false;
   attack = false;
   counter = 0;
+  goLeft = true;
+  goRight = false;
 
   offset = {
     top: 90,
