@@ -86,31 +86,40 @@ class World {
 
   checkThrowObjects() {
     if (this.keyboard.SPACE) {
-      if (this.character.otherDirection) {
-        let bubble = new ThrowableObject(
-          this.character.hitbox.left,
-          this.character.hitbox.top + 20,
-          this.character.otherDirection
-        );
-        if (this.poisonBar.progress == 100) {
-          bubble.img.src =
-            "./assets/img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png";
-        }
-        this.throwableObjects.push(bubble);
+      if(this.character.otherDirection) {
+        this.createOtherDirectionThrowableObject();
       } else {
-        let bubble = new ThrowableObject(
-          this.character.hitbox.right,
-          this.character.hitbox.top + 20,
-          this.character.otherDirection
-        );
-        if (this.poisonBar.progress == 100) {
-          bubble.img.src =
-            "./assets/img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png";
-        }
-        this.throwableObjects.push(bubble);
+        this.createThrowableObject();
       }
     }
   }
+
+  createThrowableObject() {
+    let bubble = new ThrowableObject(
+      this.character.hitbox.right,
+      this.character.hitbox.top + 20,
+      this.character.otherDirection
+    );
+    this.checkPoisonBubble(bubble);
+    this.throwableObjects.push(bubble);
+  }
+
+  createOtherDirectionThrowableObject() {
+    let bubble = new ThrowableObject(
+      this.character.hitbox.left,
+      this.character.hitbox.top + 20,
+      this.character.otherDirection
+    );
+    this.checkPoisonBubble(bubble);
+    this.throwableObjects.push(bubble);
+}
+
+checkPoisonBubble(bubble) {
+  if (this.poisonBar.progress == 100) {
+    bubble.img.src =
+      "./assets/img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png";
+  }
+}
 
   checkCollisions() {
     this.checkEnemiesCollision();
@@ -147,7 +156,6 @@ class World {
   }
 
   checkIfCollision(enemy) {
-    console.log("Hit");
     this.character.hit();
     this.statusBar.setPercentage(this.character.energy);
     console.log(this.character.energy);
@@ -171,21 +179,28 @@ class World {
     this.throwableObjects.forEach((throwableObject, throwableIndex) => {
       this.level.enemies.forEach((enemy) => {
         if (enemy.isColliding(throwableObject)) {
-          if (enemy instanceof Jellyfish) {
-            enemy.kill();
-            console.log("Bubble Hit");
-            setTimeout(() => {
-              this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
-            }, 4500);
-          }
-          if (enemy instanceof Boss && this.poisonBar.progress == 100) {
-            console.log(enemy.energy);
-            enemy.hit();
-          }
+          this.hitJellyfish(enemy);
+          this.hitBoss(enemy);     
           this.throwableObjects.splice(throwableIndex, 1);
         }
       });
     });
+  }
+
+  hitBoss(enemy) {
+    if (enemy instanceof Boss && this.poisonBar.progress == 100) {
+      console.log(enemy.energy);
+      enemy.hit();
+    }
+  }
+
+  hitJellyfish(enemy) {
+    if (enemy instanceof Jellyfish) {
+      enemy.kill();
+      setTimeout(() => {
+        this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+      }, 4500);
+    }
   }
 
   checkEnemyCollision() {
