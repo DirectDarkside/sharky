@@ -34,7 +34,24 @@ class World {
       this.checkHitCollision();
       this.checkEnemyCollision();
       this.checkEndbossSpawn();
+      this.checkPlayerPosition();
     }, 100);
+  }
+
+  checkPlayerPosition() {
+    this.level.enemies.forEach(enemy => {
+      if(enemy instanceof Boss) {
+        if(this.character.x < enemy.x) {
+          enemy.goLeft = true;
+          enemy.goRight = false;
+          enemy.otherDirection = false;
+        } else {
+          enemy.goLeft = false;
+          enemy.goRight = true;
+          enemy.otherDirection = true;
+        }
+      }
+    });
   }
 
   checkEndbossSpawn() {

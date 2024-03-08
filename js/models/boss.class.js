@@ -1,4 +1,8 @@
 class Boss extends MovableObject {
+
+  goLeft = true;
+  goRight = false;
+
   IMAGES_INTRODUCE = [
     "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/1.png",
     "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/2.png",
@@ -78,9 +82,9 @@ class Boss extends MovableObject {
   animate() {
     setInterval(() => {
       if (this.spawn) {
-        this.x = 700;
-        this.y = 100;
         if (!this.hadFirstContact) {
+          this.x = 700;
+          this.y = 100;
           if (this.counter < 10) {
             this.playAnimation(this.IMAGES_INTRODUCE);
           } else {
@@ -97,8 +101,17 @@ class Boss extends MovableObject {
           } else {
             this.playAnimation(this.IMAGES_SWIMMING);
           }
+          this.move();
         }
       }
     }, 150);
+  }
+
+  move() {
+    if(this.goLeft) {
+      this.x -= 7.5;
+    } else if(this.goRight) {
+      this.x += 7.5;
+    }
   }
 }
