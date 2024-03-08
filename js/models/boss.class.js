@@ -56,6 +56,7 @@ class Boss extends MovableObject {
   goLeft = true;
   goRight = false;
   dead = false;
+  currentIndex = 0;
 
   offset = {
     top: 90,
@@ -93,7 +94,7 @@ class Boss extends MovableObject {
           this.counter++;
         } else {
           if (this.isDead()) {
-            this.playAnimation(this.IMAGES_DEAD);
+            this.playDeadAnimation();
             this.dead = true;
           } else if(this.isHurt()) {
             this.playAnimation(this.IMAGES_HURT);
@@ -109,10 +110,22 @@ class Boss extends MovableObject {
   }
 
   move() {
-    if(this.goLeft) {
-      this.x -= 7.5;
-    } else if(this.goRight) {
-      this.x += 7.5;
+    if(!this.dead) {
+      if(this.goLeft) {
+        this.x -= 7.5;
+      } else if(this.goRight) {
+        this.x += 7.5;
+      }
+    }
+  }
+  
+  playDeadAnimation() {
+    if(this.currentIndex < this.IMAGES_DEAD.length) {
+      this.playAnimation(this.IMAGES_DEAD);
+      this.currentIndex++;
+    } else {
+      this.img = this.imageCache[this.IMAGES_DEAD[this.IMAGES_DEAD.length - 1]];
     }
   }
 }
+

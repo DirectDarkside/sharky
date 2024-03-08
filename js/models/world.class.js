@@ -47,7 +47,7 @@ class World {
       if(!this.loadDeath) {
         setTimeout(() => {
           this.gameOver = true;
-        }, 2000);
+        }, 3000);
         this.loadDeath = true;
       }
     }
