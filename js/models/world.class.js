@@ -11,6 +11,7 @@ class World {
   throwableObjects = [];
   bossIntroduce = false;
   gameOver = false;
+  loadDeath = false;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -36,7 +37,20 @@ class World {
       this.checkEnemyCollision();
       this.checkEndbossSpawn();
       this.checkPlayerPosition();
+      this.checkGameOver();
     }, 100);
+  }
+
+  checkGameOver() {
+    const bossIndex = this.level.enemies.length - 1;
+    if(this.level.enemies[bossIndex].dead) {
+      if(!this.loadDeath) {
+        setTimeout(() => {
+          this.gameOver = true;
+        }, 2000);
+        this.loadDeath = true;
+      }
+    }
   }
 
   checkPlayerPosition() {
@@ -165,11 +179,6 @@ class World {
           if (enemy instanceof Boss && this.poisonBar.progress == 100) {
             console.log(enemy.energy);
             enemy.hit();
-            if(enemy.dead) {
-              setTimeout(() => {
-                this.gameOver = true;
-              }, 2000);
-            }
           }
           this.throwableObjects.splice(throwableIndex, 1);
         }
