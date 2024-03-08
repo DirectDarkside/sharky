@@ -44,6 +44,21 @@ canvas {
     transform: rotate(37deg);
 }
 
+#restart_img {
+    width: 160px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 40px;
+    position: absolute;
+    left: 40%;
+    right: 0;
+    bottom: 25%;
+}
+
+.restart_img {
+    display: none;
+}
+
 .movement_button {
     background-position: center;
 }

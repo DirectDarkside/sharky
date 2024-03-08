@@ -5,8 +5,18 @@ let keyboard = new Keyboard();
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+
     keysBindAction();
     bindTouchAction();
+    bindRestartAction();
+}
+
+function bindRestartAction() {
+    document.getElementById('restart_img').addEventListener('click', () => {
+        document.getElementById('restart_img').style.display = 'none';
+        resetLevel();
+        init();
+    });
 }
 
 function keysBindAction () {

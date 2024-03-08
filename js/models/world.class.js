@@ -20,6 +20,7 @@ class World {
     this.draw();
     this.setWorld();
     this.run();
+    document.getElementById('restart_img').style.display = 'none';
   }
 
   setWorld() {
@@ -47,6 +48,7 @@ class World {
       if(!this.loadDeath) {
         setTimeout(() => {
           this.gameOver = true;
+         document.getElementById('restart_img').style.display = 'flex';
         }, 3000);
         this.loadDeath = true;
       }
