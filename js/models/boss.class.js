@@ -55,6 +55,7 @@ class Boss extends MovableObject {
   counter = 0;
   goLeft = true;
   goRight = false;
+  dead = false;
 
   offset = {
     top: 90,
@@ -93,6 +94,7 @@ class Boss extends MovableObject {
         } else {
           if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
+            this.dead = true;
           } else if(this.isHurt()) {
             this.playAnimation(this.IMAGES_HURT);
           } else if (this.attack) {

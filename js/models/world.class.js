@@ -10,6 +10,7 @@ class World {
   poisonBar = new PoisonBar();
   throwableObjects = [];
   bossIntroduce = false;
+  gameOver = false;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -164,6 +165,11 @@ class World {
           if (enemy instanceof Boss && this.poisonBar.progress == 100) {
             console.log(enemy.energy);
             enemy.hit();
+            if(enemy.dead) {
+              setTimeout(() => {
+                this.gameOver = true;
+              }, 2000);
+            }
           }
           this.throwableObjects.splice(throwableIndex, 1);
         }
@@ -188,17 +194,22 @@ class World {
   }
 
   draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.translate(this.camera_x, 0);
-    this.addObjectsToMap(this.level.backgroundObjects);
-    this.addObjectsToMap(this.level.enemies);
-    this.addObjectsToMap(this.level.items);
-    this.addObjectsToMap(this.throwableObjects);
-    this.addToMap(this.statusBar);
-    this.addToMap(this.coinsBar);
-    this.addToMap(this.poisonBar);
-    this.addToMap(this.character);
-    this.ctx.translate(-this.camera_x, 0);
+    if(!this.gameOver) {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.translate(this.camera_x, 0);
+      this.addObjectsToMap(this.level.backgroundObjects);
+      this.addObjectsToMap(this.level.enemies);
+      this.addObjectsToMap(this.level.items);
+      this.addObjectsToMap(this.throwableObjects);
+      this.addToMap(this.statusBar);
+      this.addToMap(this.coinsBar);
+      this.addToMap(this.poisonBar);
+      this.addToMap(this.character);
+      this.ctx.translate(-this.camera_x, 0);
+    } else {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.addObjectsToMap(this.level.gameOverObjects);
+    }
     requestAnimationFrame(() => {
       this.draw();
     });
