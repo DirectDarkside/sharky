@@ -8,10 +8,23 @@ function init() {
 
     keysBindAction();
     bindTouchAction();
-    bindRestartAction();
+    if(window.innerWidth < 720 || window.innerHeight < 480) {
+        bindRestartActionMobile();        
+    } else {
+        bindRestartActionDesktop();
+    }
 }
 
-function bindRestartAction() {
+function bindRestartActionMobile() {
+    document.getElementById('restart_img').onclick = (e) => {
+        e.preventDefault();
+        document.getElementById('restart_img').style.display = 'none';
+        resetLevel();
+        init();
+    }
+}
+
+function bindRestartActionDesktop() {
     document.getElementById('restart_img').addEventListener('click', () => {
         document.getElementById('restart_img').style.display = 'none';
         resetLevel();
