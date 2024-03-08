@@ -99,6 +99,22 @@ function bindTouchAction() {
         e.preventDefault();
         keyboard.RIGHT = false;
     });
+    document.getElementById('slap_button').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.D = true;
+    });
+    document.getElementById('slap_button').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.D = false;
+    });
+    document.getElementById('shoot_button').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.SPACE = true;
+    });
+    document.getElementById('shoot_button').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.SPACE = false;
+    });
 }
 
 function fullscreen() {

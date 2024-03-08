@@ -34,6 +34,16 @@ canvas {
     background-image: url('./assets/img/buttons/right_button.png');
 }
 
+#slap_button {
+    background-image: url('./assets/img/buttons/slap.png');
+    transform: rotate(-100deg)
+}
+
+#shoot_button {
+    background-image: url('./assets/img/buttons/shoot.png');
+    transform: rotate(37deg);
+}
+
 .movement_button {
     background-position: center;
 }
@@ -42,9 +52,11 @@ canvas {
     position: absolute;
     left: 20px;
     bottom: 15px;
-    display: flex;
-    flex-direction: column;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
     gap: 8px;
+    width: 100%;
 }
 
 .btn_container button {
@@ -52,6 +64,21 @@ canvas {
     width: 50px;
     border-radius: 24px;
     opacity: 0.6;
+}
+
+.btn_section_left {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+}
+
+.btn_section_right {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    right: 35px;
+    bottom: 24px;
+    transform: rotate(142deg);
 }
 
 .top {
@@ -63,10 +90,18 @@ canvas {
     canvas {
         width: 100%;
     }
+
+    .btn_container {
+        display: flex;
+    }
 }
 
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100vh;
+    }
+
+    .btn_container {
+        display: flex;
     }
 }
