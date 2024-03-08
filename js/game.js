@@ -9,20 +9,21 @@ function init() {
     keysBindAction();
     bindTouchAction();
     if(window.innerWidth < 720 || window.innerHeight < 480) {
-        bindRestartActionMobile();        
+        // bindRestartActionMobile();        
+        bindRestartActionDesktop();
     } else {
         bindRestartActionDesktop();
     }
 }
 
-function bindRestartActionMobile() {
-    document.getElementById('restart_img').onclick = (e) => {
-        e.preventDefault();
-        document.getElementById('restart_img').style.display = 'none';
-        resetLevel();
-        init();
-    }
-}
+// function bindRestartActionMobile() {
+//     document.getElementById('restart_img').onclick = (e) => {
+//         e.preventDefault();
+//         document.getElementById('restart_img').style.display = 'none';
+//         resetLevel();
+//         init();
+//     }
+// }
 
 function bindRestartActionDesktop() {
     document.getElementById('restart_img').addEventListener('click', () => {
