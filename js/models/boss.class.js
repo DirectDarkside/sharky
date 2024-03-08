@@ -84,29 +84,37 @@ class Boss extends MovableObject {
     setInterval(() => {
       if (this.spawn) {
         if (!this.hadFirstContact) {
-          this.x = 700;
-          this.y = 100;
-          if (this.counter < 10) {
-            this.playAnimation(this.IMAGES_INTRODUCE);
-          } else {
-            this.hadFirstContact = true;
-          }
-          this.counter++;
+          this.showFirstContact();
         } else {
-          if (this.isDead()) {
-            this.playDeadAnimation();
-            this.dead = true;
-          } else if(this.isHurt()) {
-            this.playAnimation(this.IMAGES_HURT);
-          } else if (this.attack) {
-            this.playAnimation(this.IMAGES_ATTACK);
-          } else {
-            this.playAnimation(this.IMAGES_SWIMMING);
-          }
+          this.currentState();
           this.move();
         }
       }
     }, 150);
+  }
+
+  showFirstContact() {
+    this.x = 700;
+    this.y = 100;
+    if (this.counter < 10) {
+      this.playAnimation(this.IMAGES_INTRODUCE);
+    } else {
+      this.hadFirstContact = true;
+    }
+    this.counter++;
+  }
+
+  currentState() {
+    if (this.isDead()) {
+      this.playDeadAnimation();
+      this.dead = true;
+    } else if(this.isHurt()) {
+      this.playAnimation(this.IMAGES_HURT);
+    } else if (this.attack) {
+      this.playAnimation(this.IMAGES_ATTACK);
+    } else {
+      this.playAnimation(this.IMAGES_SWIMMING);
+    }
   }
 
   move() {
