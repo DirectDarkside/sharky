@@ -131,7 +131,6 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_BUBBLE_ATTACK);
     this.loadImages(this.IMAGES_POISON_BUBBLE_ATTACK);
     this.loadImages(this.IMAGES_SLAP_ATTACK);
-
     this.animate();
   }
 
@@ -152,32 +151,52 @@ class Character extends MovableObject {
   }
 
   checkMovement() {
-    if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-      this.moveRight();
-      this.otherDirection = false;
+    this.checkMoveRight();
+    this.checkMoveLeft();
+    this.checkMoveUp();
+    this.checkMoveDown();
+    this.checkCharacterMovement();
+  }
+
+  checkCharacterMovement() {
+    if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+      world.character.movement = true;
+    } else {
+      world.character.movement = false;
+    }
+  }
+
+  checkMoveDown() {
+    if (this.world.keyboard.DOWN && this.y < 355) {
+      this.moveDown();
       this.swimming_sound.play();
       this.resetSleepAnimation();
     }
+  }
+
+  checkMoveUp() {
+    if (this.world.keyboard.UP && this.y > -50) {
+      this.moveUp();
+      this.swimming_sound.play();
+      this.resetSleepAnimation();
+    }
+  }
+
+  checkMoveLeft() {
     if (this.world.keyboard.LEFT && this.x > 0) {
       this.moveLeft();
       this.otherDirection = true;
       this.swimming_sound.play();
       this.resetSleepAnimation();
     }
-    if (this.world.keyboard.UP && this.y > -50) {
-      this.moveUp();
+  }
+
+  checkMoveRight() {
+    if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+      this.moveRight();
+      this.otherDirection = false;
       this.swimming_sound.play();
       this.resetSleepAnimation();
-    }
-    if (this.world.keyboard.DOWN && this.y < 355) {
-      this.moveDown();
-      this.swimming_sound.play();
-      this.resetSleepAnimation();
-    }
-    if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-      world.character.movement = true;
-    } else {
-      world.character.movement = false;
     }
   }
 
