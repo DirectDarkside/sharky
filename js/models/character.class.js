@@ -4,6 +4,7 @@ class Character extends MovableObject {
   currentIndex = 0;
   jellyfish = false;
   pufferfish = false;
+  dead = false;
 
   offset = {
     top: 60,

@@ -38,11 +38,25 @@ class World {
       this.checkEnemyCollision();
       this.checkEndbossSpawn();
       this.checkPlayerPosition();
+      this.checkGameWin();
       this.checkGameOver();
     }, 100);
   }
 
   checkGameOver() {
+    if(this.character.energy == 0) {
+      if(!this.loadDeath) {
+        setTimeout(() => {
+          this.character.dead = true;
+          this.gameOver = true;
+         document.getElementById('restart_img').style.display = 'flex';
+        }, 900);
+        this.loadDeath = true;
+      }
+    }
+  }
+
+  checkGameWin() {
     const bossIndex = this.level.enemies.length - 1;
     if(this.level.enemies[bossIndex].dead) {
       if(!this.loadDeath) {
@@ -232,9 +246,11 @@ checkPoisonBubble(bubble) {
       this.addToMap(this.poisonBar);
       this.addToMap(this.character);
       this.ctx.translate(-this.camera_x, 0);
+    } else if(this.character.dead) {
+      this.addObjectsToMap(this.level.gameOverObjects);
     } else {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.addObjectsToMap(this.level.gameOverObjects);
+      this.addObjectsToMap(this.level.gameWinObjects);
     }
     requestAnimationFrame(() => {
       this.draw();
