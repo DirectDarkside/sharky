@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+const turnDevice = document.getElementById('turn_device_container');
 
 function init() {
   canvas = document.getElementById("canvas");
@@ -22,6 +23,14 @@ function bindRestartAction() {
 function keysBindAction() {
   setBindActionDown();
   setBindActionUp();
+}
+
+function checkDeviceOrientation() {
+  if(innerHeight > innerWidth) {
+    turnDevice.style.display = 'flex';
+  } else {
+    turnDevice.style.display = 'none';
+  }
 }
 
 function setBindActionDown() {

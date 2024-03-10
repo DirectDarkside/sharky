@@ -40,6 +40,7 @@ class World {
       this.checkPlayerPosition();
       this.checkGameWin();
       this.checkGameOver();
+      checkDeviceOrientation();
     }, 100);
   }
 
