@@ -55,7 +55,7 @@ canvas {
     bottom: 25%;
 }
 
-.restart_img {
+#restart_img {
     display: none;
 }
 
@@ -124,6 +124,23 @@ canvas {
     gap: 24px;
     font-size: 24px;
     text-align: center;
+}
+
+#start_screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('./assets/img/3. Background/Mesa de trabajo 1.png');
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start_screen img {
+    width: 250px;
 }
 
 @media only screen and (max-width: 720px) {

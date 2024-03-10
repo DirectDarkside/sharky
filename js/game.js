@@ -4,12 +4,16 @@ let keyboard = new Keyboard();
 const turnDevice = document.getElementById('turn_device_container');
 
 function init() {
+  closeStartScreen();
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
-
   keysBindAction();
   bindTouchAction();
   bindRestartAction();
+}
+
+function closeStartScreen() {
+  document.getElementById('start_screen').style.display = 'none';
 }
 
 function bindRestartAction() {
