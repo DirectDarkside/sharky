@@ -12,6 +12,7 @@ class World {
   bossIntroduce = false;
   gameOver = false;
   loadDeath = false;
+  backgroundSound = new Audio('./assets/audio/bg_music.mp3');
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -21,10 +22,13 @@ class World {
     this.setWorld();
     this.setAudios();
     this.run();
+    this.backgroundSound.volume = 0.3;
+    this.backgroundSound.play();
     document.getElementById('restart_img').style.display = 'none';
   }
 
   setAudios() {
+    this.level.audioElements.push(this.backgroundSound);
     this.level.audioElements.push(this.character.swimming_sound);
     this.level.items.forEach(item => {
       this.level.audioElements.push(item.takeSound)
@@ -58,6 +62,7 @@ class World {
         setTimeout(() => {
           this.character.dead = true;
           this.gameOver = true;
+          mutePage();
          document.getElementById('restart_img').style.display = 'flex';
         }, 900);
         this.loadDeath = true;
@@ -72,6 +77,7 @@ class World {
         setTimeout(() => {
           this.gameOver = true;
          document.getElementById('restart_img').style.display = 'flex';
+         mutePage();
         }, 3000);
         this.loadDeath = true;
       }
