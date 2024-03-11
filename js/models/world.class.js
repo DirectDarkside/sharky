@@ -191,7 +191,6 @@ checkPoisonBubble(bubble) {
     this.character.hurt_sound.play();
     this.character.hit();
     this.statusBar.setPercentage(this.character.energy);
-    console.log(this.character.energy);
     if (enemy instanceof Jellyfish) {
       this.character.jellyfish = true;
       setTimeout(() => {
@@ -223,7 +222,6 @@ checkPoisonBubble(bubble) {
   hitBoss(enemy) {
     if (enemy instanceof Boss && this.poisonBar.progress == 100) {
       enemy.hurt_sound.play();
-      console.log(enemy.energy);
       enemy.hit();
     }
   }

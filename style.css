@@ -186,14 +186,24 @@ canvas {
     cursor: pointer;
 }
 
+#mobile_startscreen_headline {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 990;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
     }
 
-    .btn_container {
-        display: flex;
-    }    
+    #headline {
+        display: none;
+    }
 }
 
 @media only screen and (max-height: 480px) {
@@ -203,5 +213,9 @@ canvas {
 
     .btn_container {
         display: flex;
+    }
+
+    #headline {
+        display: none;
     }
 }
