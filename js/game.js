@@ -14,10 +14,10 @@ function init() {
 }
 
 function stopSounds() {
-  world.level.audioElements.forEach(element => {
-    element.stop();
-    element.src = '';
-  });
+  for(let i = (world.level.audioElements.length - 1); i > 0; i--) {
+    world.level.audioElements[i].pause();
+    world.level.audioElements.splice(i, 1);
+  }
 }
 
 function mutePage() {

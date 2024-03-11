@@ -45,7 +45,7 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowObjects();
-    }, 300);
+    }, 1000);
 
     setInterval(() => {
       this.checkHitCollision();
@@ -65,6 +65,7 @@ class World {
           this.character.dead = true;
           this.gameOver = true;
           mutePage();
+          stopSounds();
          document.getElementById('restart_img').style.display = 'flex';
         }, 900);
         this.loadDeath = true;
@@ -80,6 +81,7 @@ class World {
           this.gameOver = true;
          document.getElementById('restart_img').style.display = 'flex';
          mutePage();
+         stopSounds();
         }, 3000);
         this.loadDeath = true;
       }

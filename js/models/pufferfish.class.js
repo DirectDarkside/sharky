@@ -38,15 +38,15 @@ class Pufferfish extends MovableObject {
         this.loadImages(this.IMAGES_ATTACK_POISON);
         this.height = 80;
         this.width = 80;
-        this.x = 200 + Math.random() * 400;
-        this.y = Math.random() * 400;
+        this.x = 800 + Math.random() * 1500;
+        this.y = 100 + Math.random() * 300;
         this.speed = 0.15 + Math.random() * 0.25;
         this.animate();
     }
 
     animate() {
         setInterval(() => {
-            // this.moveLeft();
+            this.moveLeft();
         }, 0.250);
         setInterval(() => {
             if(this.isDead()) {

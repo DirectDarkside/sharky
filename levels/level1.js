@@ -51,10 +51,19 @@ function newItems() {
 
 function newEnemies() {
     return [
-        // new Pufferfish(400, 100),
-        // new Pufferfish(400, 200),
-        // new Pufferfish(400, 350),
-        // new Jellyfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Jellyfish(),
+        new Jellyfish(),
+        new Jellyfish(),
+        new Jellyfish(),
     
         new Boss(-500, -500),
     ];
