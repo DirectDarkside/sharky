@@ -95,7 +95,7 @@ class Boss extends MovableObject {
   }
 
   showFirstContact() {
-    this.x = 700;
+    this.x = 2000;
     this.y = 100;
     if (this.counter < 10) {
       this.playAnimation(this.IMAGES_INTRODUCE);

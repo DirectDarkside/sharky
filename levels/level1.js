@@ -10,6 +10,10 @@ const backgroundObjects = [
     new BackgroundObject('./assets/img/3. Background/Barrier/2.png', 320, 330),
     new BackgroundObject('./assets/img/3. Background/Dark/2.png', 720, 0, canvas.width, canvas.height),
     new BackgroundObject('./assets/img/3. Background/Layers/1. Light/2.png', 720, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Dark/1.png', 1440, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Layers/1. Light/1.png', 1440, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Dark/2.png', 2160, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Layers/1. Light/2.png', 2160, 0, canvas.width, canvas.height),
 ];
 const gameWinObjects = [
     new BackgroundObject('./assets/img/6.Botones/Try again/Mesa de trabajo 1.png', 0, 0, canvas.width, canvas.height)

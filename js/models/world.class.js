@@ -103,7 +103,7 @@ class World {
   }
 
   checkEndbossSpawn() {
-    if (this.character.x > 300 && !this.bossIntroduce) {
+    if (this.character.x > 1600 && !this.bossIntroduce) {
       this.level.enemies.forEach((enemy) => {
         if (enemy instanceof Boss) {
           enemy.counter = 0;
@@ -257,15 +257,9 @@ checkPoisonBubble(bubble) {
     if(!this.gameOver) {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.ctx.translate(this.camera_x, 0);
-      this.addObjectsToMap(this.level.backgroundObjects);
-      this.addObjectsToMap(this.level.enemies);
-      this.addObjectsToMap(this.level.items);
-      this.addObjectsToMap(this.throwableObjects);
-      this.addToMap(this.statusBar);
-      this.addToMap(this.coinsBar);
-      this.addToMap(this.poisonBar);
-      this.addToMap(this.character);
+      this.addAllObjects();  
       this.ctx.translate(-this.camera_x, 0);
+      this.backgroundSound.play();
     } else if(this.character.dead) {
       this.addObjectsToMap(this.level.gameOverObjects);
     } else {
@@ -275,6 +269,17 @@ checkPoisonBubble(bubble) {
     requestAnimationFrame(() => {
       this.draw();
     });
+  }
+
+  addAllObjects() {
+    this.addObjectsToMap(this.level.backgroundObjects);
+    this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.level.items);
+    this.addObjectsToMap(this.throwableObjects);
+    this.addToMap(this.statusBar);
+    this.addToMap(this.coinsBar);
+    this.addToMap(this.poisonBar);
+    this.addToMap(this.character);
   }
 
   addObjectsToMap(objects) {
