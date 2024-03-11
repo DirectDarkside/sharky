@@ -13,6 +13,13 @@ function init() {
   unmutePage();
 }
 
+function stopSounds() {
+  world.level.audioElements.forEach(element => {
+    element.stop();
+    element.src = '';
+  });
+}
+
 function mutePage() {
   world.level.audioElements.forEach(element => {
     element.muted = true;

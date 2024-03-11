@@ -56,6 +56,6 @@ function newEnemies() {
         // new Pufferfish(400, 350),
         // new Jellyfish(),
     
-        new Boss(-500, -100),
+        new Boss(-500, -500),
     ];
 }

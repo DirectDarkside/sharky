@@ -192,7 +192,7 @@ canvas {
     top: 0;
     z-index: 990;
     width: 100%;
-    display: flex;
+    display: none;
     justify-content: center;
 }
 
@@ -203,6 +203,10 @@ canvas {
 
     #headline {
         display: none;
+    }
+
+    #mobile_startscreen_headline {
+        display: flex;
     }
 }
 
@@ -217,5 +221,9 @@ canvas {
 
     #headline {
         display: none;
+    }
+
+    #mobile_startscreen_headline {
+        display: flex;
     }
 }
