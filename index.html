@@ -34,6 +34,11 @@
             <img id="sound_img" class="sound" src="./assets/img/other/sound.png" alt="sound button">
             <img class="fullscreen_button" src="./assets/img/6.Botones/Full Screen/Mesa de trabajo 7.png" alt="fullscreen" onclick="fullscreen()">
         </div>
+        <div class="info_container">
+            <button onclick="showInfoPopup()">
+                <img src="./assets/img/other/info.png" alt="info button">
+            </button>
+        </div>
         <div>
             <h1 id="mobile_startscreen_headline">SHARKY</h1>
         </div>
@@ -52,6 +57,12 @@
             <div>
                 <img src="./assets/img/6.Botones/Key/arrow keys.png" alt="control img">
                 <img src="./assets/img/6.Botones/Tittles/Move title.png" alt="use arrow keys">
+            </div>
+        </div>
+        <div id="info_popup_container" onclick="closeInfoPopup()">
+            <div class="info_popup_content">
+                <h2>Instructions</h2>
+                <p>Collect all the poisons to defeat the boss</p>
             </div>
         </div>
     </div>

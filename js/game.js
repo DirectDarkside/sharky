@@ -13,6 +13,14 @@ function init() {
   unmutePage();
 }
 
+function showInfoPopup() {
+  document.getElementById('info_popup_container').style.display = 'flex';
+}
+
+function closeInfoPopup() {
+  document.getElementById('info_popup_container').style.display = 'none';
+}
+
 function stopSounds() {
   for(let i = (world.level.audioElements.length - 1); i > 0; i--) {
     world.level.audioElements[i].pause();
