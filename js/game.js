@@ -17,14 +17,16 @@ function mutePage() {
   world.level.audioElements.forEach(element => {
     element.muted = true;
   });
-  document.getElementById('sound_img').addEventListener('click', unmutePage);
+  document.getElementById('sound_img').src = './assets/img/other/mute.png';
+  document.getElementById("sound_img").setAttribute('onclick','unmutePage()');
 }
 
 function unmutePage() {
   world.level.audioElements.forEach(element => {
     element.muted = false;
   });
-  document.getElementById('sound_img').addEventListener('click', mutePage);
+  document.getElementById('sound_img').src = './assets/img/other/sound.png';
+  document.getElementById("sound_img").setAttribute('onclick','mutePage()');
 }
 
 function closeStartScreen() {
