@@ -14,6 +14,7 @@ function init() {
 
 function closeStartScreen() {
   document.getElementById('start_screen').style.display = 'none';
+  document.getElementById('controls_container').style.display = 'none';
 }
 
 function bindRestartAction() {

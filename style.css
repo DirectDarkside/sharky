@@ -57,6 +57,7 @@ canvas {
 
 #restart_img {
     display: none;
+    cursor: pointer;
 }
 
 .movement_button {
@@ -141,6 +142,30 @@ canvas {
 
 #start_screen img {
     width: 250px;
+    cursor: pointer;
+}
+
+#controls_container {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#controls_container div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#controls_container img {
+    width: 100px;
+}
+
+.control_image_key {
+    width: 40px !important;
 }
 
 @media only screen and (max-width: 720px) {
