@@ -17,15 +17,16 @@ const gameWinObjects = [
 const gameOverObjects = [
     new BackgroundObject('./assets/img/6.Botones/Tittles/Game Over/Recurso 9.png', 250, 240, 240, 80)
 ];
+let audioElements = [];
 
-let level1 = new Level(enemies, backgroundObjects, items, gameWinObjects, gameOverObjects);
+let level1 = new Level(enemies, backgroundObjects, items, gameWinObjects, gameOverObjects, audioElements);
 
 function resetLevel() {
     enemies = newEnemies();
     items = newItems();
+    audioElements = [];
 
-    level1 = new Level(enemies, backgroundObjects, items, gameWinObjects, gameOverObjects);
-
+    level1 = new Level(enemies, backgroundObjects, items, gameWinObjects, gameOverObjects, audioElements);
 }
 
 function newItems() {

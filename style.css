@@ -1,3 +1,8 @@
+@font-face {
+  font-family: LuckiestGuy;
+  src: url("./assets/font/LuckiestGuy-Regular.ttf");
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -5,6 +10,7 @@ body {
     background-image: url('./assets/img/3. Background/Legacy/Layers/5. Water/L2.png');
     background-repeat: no-repeat;
     margin: 0;
+    font-family: 'LuckiestGuy';
 }
 
 canvas {
@@ -103,9 +109,6 @@ canvas {
 }
 
 .fullscreen_button {
-    position: absolute;
-    top: 8px;
-    right: 8px;
     width: 100px;
     height: 24px;
 }
@@ -166,6 +169,19 @@ canvas {
 
 .control_image_key {
     width: 40px !important;
+}
+
+.game_setting_container {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sound {
+    width: 24px;
 }
 
 @media only screen and (max-width: 720px) {

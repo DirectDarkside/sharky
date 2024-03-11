@@ -12,6 +12,18 @@ function init() {
   bindRestartAction();
 }
 
+function mutePage() {
+  world.level.audioElements.forEach(element => {
+    element.muted = true;
+  });
+}
+
+function unmutePage() {
+  world.level.audioElements.forEach(element => {
+    element.muted = false;
+  });
+}
+
 function closeStartScreen() {
   document.getElementById('start_screen').style.display = 'none';
   document.getElementById('controls_container').style.display = 'none';

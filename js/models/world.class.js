@@ -19,8 +19,13 @@ class World {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
+    this.setAudios();
     this.run();
     document.getElementById('restart_img').style.display = 'none';
+  }
+
+  setAudios() {
+    this.level.audioElements.push(this.character.swimming_sound);
   }
 
   setWorld() {
