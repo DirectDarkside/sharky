@@ -48,6 +48,7 @@ function closeStartScreen() {
   document.getElementById('start_screen').style.display = 'none';
   document.getElementById('controls_container').style.display = 'none';
   document.getElementById('mobile_startscreen_headline').style.display = 'none';
+  document.getElementById('info_container').style.display = 'none';
 }
 
 function bindRestartAction() {

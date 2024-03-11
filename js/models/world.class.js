@@ -22,7 +22,7 @@ class World {
     this.setWorld();
     this.setAudios();
     this.run();
-    this.backgroundSound.volume = 0.3;
+    this.backgroundSound.volume = 0.15;
     this.backgroundSound.play();
     document.getElementById('restart_img').style.display = 'none';
   }
@@ -294,7 +294,7 @@ checkPoisonBubble(bubble) {
     }
 
     mo.draw(this.ctx);
-    mo.drawFrame(this.ctx);
+    // mo.drawFrame(this.ctx);
 
     if (mo.hitbox) {
       mo.hitbox = mo.setHitbox();
