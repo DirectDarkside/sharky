@@ -26,6 +26,9 @@ class World {
 
   setAudios() {
     this.level.audioElements.push(this.character.swimming_sound);
+    this.level.items.forEach(item => {
+      this.level.audioElements.push(item.takeSound)
+    });
   }
 
   setWorld() {
@@ -150,11 +153,12 @@ checkPoisonBubble(bubble) {
     this.level.items.forEach((item, index) => {
       if (this.character.isColliding(item)) {
         if (item instanceof Coin) {
-          item.takeCoin.play();
+          item.takeSound.play();
           this.coinsBar.progress += 20;
           this.coinsBar.setPercentage(this.coinsBar.progress);
           this.level.items.splice(index, 1);
         } else if (item instanceof Poison) {
+          item.takeSound.play();
           this.poisonBar.progress += 20;
           this.poisonBar.setPercentage(this.poisonBar.progress);
           this.level.items.splice(index, 1);

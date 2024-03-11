@@ -10,6 +10,7 @@ class Poison extends MovableObject {
         "./assets/img/4. Marcadores/Posión/Animada/7.png",
         "./assets/img/4. Marcadores/Posión/Animada/8.png",
     ];
+    takeSound = new Audio('./assets/audio/take_item.mp3');
 
     constructor(x, y) {
         super().loadImage('./assets/img/4. Marcadores/1. Coins/1.png');

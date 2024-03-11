@@ -111,6 +111,7 @@ canvas {
 .fullscreen_button {
     width: 100px;
     height: 24px;
+    cursor: pointer;
 }
 
 #turn_device_container {
@@ -182,6 +183,7 @@ canvas {
 
 .sound {
     width: 24px;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 720px) {

@@ -10,18 +10,21 @@ function init() {
   keysBindAction();
   bindTouchAction();
   bindRestartAction();
+  unmutePage();
 }
 
 function mutePage() {
   world.level.audioElements.forEach(element => {
     element.muted = true;
   });
+  document.getElementById('sound_img').addEventListener('click', unmutePage);
 }
 
 function unmutePage() {
   world.level.audioElements.forEach(element => {
     element.muted = false;
   });
+  document.getElementById('sound_img').addEventListener('click', mutePage);
 }
 
 function closeStartScreen() {

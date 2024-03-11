@@ -1,6 +1,6 @@
 class Coin extends MovableObject {
 
-    takeCoin = new Audio('./assets/audio/take_coin.mp3');
+    takeSound = new Audio('./assets/audio/take_coin.mp3');
 
     IMAGES = [
         "./assets/img/4. Marcadores/1. Coins/1.png",
