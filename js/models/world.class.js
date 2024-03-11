@@ -30,6 +30,8 @@ class World {
   setAudios() {
     this.level.audioElements.push(this.backgroundSound);
     this.level.audioElements.push(this.character.swimming_sound);
+    this.level.audioElements.push(this.character.hurt_sound);
+    this.level.audioElements.push(this.level.enemies[this.level.enemies.length - 1].hurt_sound);
     this.level.items.forEach(item => {
       this.level.audioElements.push(item.takeSound)
     });
@@ -186,6 +188,7 @@ checkPoisonBubble(bubble) {
   }
 
   checkIfCollision(enemy) {
+    this.character.hurt_sound.play();
     this.character.hit();
     this.statusBar.setPercentage(this.character.energy);
     console.log(this.character.energy);
@@ -219,6 +222,7 @@ checkPoisonBubble(bubble) {
 
   hitBoss(enemy) {
     if (enemy instanceof Boss && this.poisonBar.progress == 100) {
+      enemy.hurt_sound.play();
       console.log(enemy.energy);
       enemy.hit();
     }

@@ -117,7 +117,8 @@ class Character extends MovableObject {
     "./assets/img/1.Sharkie/4.Attack/Fin slap/8.png",
   ];
   world;
-  swimming_sound = new Audio("./assets/audio/swimming_sound.mp3");
+  swimming_sound = new Audio('./assets/audio/swimming_sound.mp3');
+  hurt_sound = new Audio('./assets/audio/character_hurt.mp3');
   movement = false;
 
   constructor() {

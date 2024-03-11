@@ -57,6 +57,7 @@ class Boss extends MovableObject {
   goRight = false;
   dead = false;
   currentIndex = 0;
+  hurt_sound = new Audio('./assets/audio/boss_hurt.mp3');
 
   offset = {
     top: 90,
