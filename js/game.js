@@ -104,33 +104,33 @@ function setBindActionUp() {
 
 function setMobileUpEvent() {
   document.getElementById("up_button").addEventListener("touchstart", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.UP = true;
   });
   document.getElementById("up_button").addEventListener("touchend", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.UP = false;
   });
 }
 
 function setMobileLeftEvent() {
   document.getElementById("left_button").addEventListener("touchstart", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.LEFT = true;
   });
   document.getElementById("left_button").addEventListener("touchend", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.LEFT = false;
   });
 }
 
 function setMobileDownEvent() {
   document.getElementById("down_button").addEventListener("touchstart", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.DOWN = true;
   });
   document.getElementById("down_button").addEventListener("touchend", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.DOWN = false;
   });
 }
@@ -139,22 +139,22 @@ function setMobileRightEvent() {
   document
     .getElementById("right_button")
     .addEventListener("touchstart", (e) => {
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
       keyboard.RIGHT = true;
     });
   document.getElementById("right_button").addEventListener("touchend", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.RIGHT = false;
   });
 }
 
 function setMobileSlapEvent() {
   document.getElementById("slap_button").addEventListener("touchstart", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.D = true;
   });
   document.getElementById("slap_button").addEventListener("touchend", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.D = false;
   });
 }
@@ -163,11 +163,11 @@ function setMobileShootEvent() {
   document
     .getElementById("shoot_button")
     .addEventListener("touchstart", (e) => {
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
       keyboard.SPACE = true;
     });
   document.getElementById("shoot_button").addEventListener("touchend", (e) => {
-    e.preventDefault();
+    if (e.cancelable) e.preventDefault();
     keyboard.SPACE = false;
   });
 }
