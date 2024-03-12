@@ -57,7 +57,6 @@ class World {
    */
   run() {
     setInterval(() => {
-      this.checkThrowObjects();
       this.checkItemCollision();
     }, 300);
     setInterval(() => {
@@ -362,7 +361,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    mo.drawFrame(this.ctx);
+    // mo.drawFrame(this.ctx);
     if (mo.hitbox) {
       mo.hitbox = mo.setHitbox();
     }

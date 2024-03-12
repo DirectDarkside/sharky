@@ -1,5 +1,6 @@
 let canvas;
 let world;
+let rdy = true;
 let keyboard = new Keyboard();
 const turnDevice = document.getElementById("turn_device_container");
 
@@ -109,6 +110,9 @@ function setBindActionDown() {
     }
     if (event.keyCode == 32) {
       keyboard.SPACE = true;
+      if(rdy) world.checkThrowObjects();
+      rdy = false;
+      setTimeout(() => {rdy = true}, 750)
     }
     if (event.keyCode == 68) {
       keyboard.D = true;

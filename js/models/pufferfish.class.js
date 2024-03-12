@@ -7,7 +7,7 @@ class Pufferfish extends MovableObject {
         top: -20,
         left: 0,
         right: 5,
-        bottom: 0
+        bottom: 25
     }
 
     IMAGES_SWIMMING = [

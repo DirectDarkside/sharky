@@ -5,7 +5,7 @@ class Jellyfish extends MovableObject {
         top: -20,
         left: 0,
         right: -5,
-        bottom: -20,
+        bottom: 0,
       };
     IMAGES_SWIMMING = [
         "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png",
