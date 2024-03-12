@@ -4,10 +4,10 @@ class Pufferfish extends MovableObject {
     collision = false;
 
     offset = {
-        top: 0,
+        top: -20,
         left: 0,
         right: 5,
-        bottom: 20
+        bottom: 0
     }
 
     IMAGES_SWIMMING = [

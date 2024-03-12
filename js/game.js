@@ -8,6 +8,7 @@ const turnDevice = document.getElementById("turn_device_container");
  */
 function init() {
   closeStartScreen();
+  resetLevel();
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
   keysBindAction();

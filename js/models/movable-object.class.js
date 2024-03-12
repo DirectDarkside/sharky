@@ -75,15 +75,14 @@ class MovableObject extends DrawableObject {
    * @returns {condition}
    */
   isSlapColliding(mo) {
-    return (
-      this.x + this.width > mo.x &&
-      this.y + this.height > mo.y &&
-      this.x < mo.x &&
-      this.y < mo.y + mo.height ||
-      this.x < mo.x + mo.width && 
-      this.y < mo.y + mo.height &&
-      this.x > mo.x
-    );
+    return (this.y + this.height - this.offset.bottom > mo.y + mo.offset.top && 
+      this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom) &&
+      (this.x + this.width - this.offset.right + 50 > mo.x + mo.offset.left &&
+        this.x + this.offset.left + 50< mo.x + mo.width - mo.offset.right)  ||
+        (this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom &&
+          this.y + this.offset.bottom > mo.y + mo.offset.top) &&
+          (this.x + this.width - this.offset.right + 50 > mo.x + mo.offset.left &&
+            this.x + this.offset.left + 50 < mo.x + mo.width - mo.offset.right);
   }
 
   /**

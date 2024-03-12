@@ -1,6 +1,12 @@
 class Jellyfish extends MovableObject {
 
     energy = 100;
+    offset = {
+        top: -20,
+        left: 0,
+        right: -5,
+        bottom: -20,
+      };
     IMAGES_SWIMMING = [
         "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png",
         "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png",

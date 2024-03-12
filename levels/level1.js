@@ -1,6 +1,5 @@
-let enemies = newEnemies();
-
-let items = newItems();
+let enemies;
+let items;
 
 const backgroundObjects = [
     new BackgroundObject('./assets/img/3. Background/Dark/2.png', -720, 0, canvas.width, canvas.height),
