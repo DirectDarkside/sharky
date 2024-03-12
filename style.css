@@ -21,8 +21,23 @@ canvas {
     height: 100%;
 }
 
-footer {
-    flex: 1 1 auto;
+.info_link_container {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: color 100ms linear;
+}
+
+.info_link_container a {
+    text-decoration: none;
+}
+
+.info_link_container a:hover {
+    text-decoration: underline;
+    color: aqua;
 }
 
 #canvas_container {
