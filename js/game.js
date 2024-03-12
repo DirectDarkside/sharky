@@ -48,7 +48,6 @@ function closeStartScreen() {
   document.getElementById('start_screen').style.display = 'none';
   document.getElementById('controls_container').style.display = 'none';
   document.getElementById('mobile_startscreen_headline').style.display = 'none';
-  document.getElementById('info_container').style.display = 'none';
 }
 
 function bindRestartAction() {
@@ -65,11 +64,13 @@ function keysBindAction() {
 }
 
 function checkDeviceOrientation() {
-  if(innerHeight > innerWidth) {
-    turnDevice.style.display = 'flex';
-  } else {
-    turnDevice.style.display = 'none';
-  }
+  setInterval(() => {
+    if(innerHeight > innerWidth) {
+      turnDevice.style.display = 'flex';
+    } else {
+      turnDevice.style.display = 'none';
+    }
+  }, 250);
 }
 
 function setBindActionDown() {
