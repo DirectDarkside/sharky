@@ -22,6 +22,9 @@ class Poison extends MovableObject {
         this.animate();
     }
 
+    /**
+     * Animate of poison object
+     */
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES);

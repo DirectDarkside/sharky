@@ -22,14 +22,15 @@ const gameOverObjects = [
     new BackgroundObject('./assets/img/6.Botones/Tittles/Game Over/Recurso 9.png', 250, 240, 240, 80)
 ];
 let audioElements = [];
-
 let level1 = new Level(enemies, backgroundObjects, items, gameWinObjects, gameOverObjects, audioElements);
 
+/**
+ * This feature resets the level by creating new enemies and items as well as resetting the audio elements. The level is then reinitialized with the updated elements.
+ */
 function resetLevel() {
     enemies = newEnemies();
     items = newItems();
     audioElements = [];
-
     level1 = new Level(enemies, backgroundObjects, items, gameWinObjects, gameOverObjects, audioElements);
 }
 

@@ -1,5 +1,4 @@
 class Boss extends MovableObject {
-
   IMAGES_INTRODUCE = [
     "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/1.png",
     "./assets/img/2.Enemy/3 Final Enemy/1.Introduce/2.png",
@@ -57,7 +56,7 @@ class Boss extends MovableObject {
   goRight = false;
   dead = false;
   currentIndex = 0;
-  hurt_sound = new Audio('./assets/audio/boss_hurt.mp3');
+  hurt_sound = new Audio("./assets/audio/boss_hurt.mp3");
 
   offset = {
     top: 90,
@@ -81,6 +80,10 @@ class Boss extends MovableObject {
     this.animate();
   }
 
+  /**
+   * This method runs an animation every 150 milliseconds, depending on the conditions,
+   * either calling the showFirstContact() method or executing the currentState() and move() methods, depending on the states of the spawn and hadFirstContact variables.
+   */
   animate() {
     setInterval(() => {
       if (this.spawn) {
@@ -94,6 +97,9 @@ class Boss extends MovableObject {
     }, 150);
   }
 
+  /**
+   * Set the Boss Coordinates and play his introduce
+   */
   showFirstContact() {
     this.x = 2000;
     this.y = 100;
@@ -105,11 +111,14 @@ class Boss extends MovableObject {
     this.counter++;
   }
 
+  /**
+   * Animates the current status of the boss
+   */
   currentState() {
     if (this.isDead()) {
       this.playDeadAnimation();
       this.dead = true;
-    } else if(this.isHurt()) {
+    } else if (this.isHurt()) {
       this.playAnimation(this.IMAGES_HURT);
     } else if (this.attack) {
       this.playAnimation(this.IMAGES_ATTACK);
@@ -119,17 +128,20 @@ class Boss extends MovableObject {
   }
 
   move() {
-    if(!this.dead) {
-      if(this.goLeft) {
+    if (!this.dead) {
+      if (this.goLeft) {
         this.x -= 7.5;
-      } else if(this.goRight) {
+      } else if (this.goRight) {
         this.x += 7.5;
       }
     }
   }
-  
+
+  /**
+   * Play the dead animation from the boss
+   */
   playDeadAnimation() {
-    if(this.currentIndex < this.IMAGES_DEAD.length) {
+    if (this.currentIndex < this.IMAGES_DEAD.length) {
       this.playAnimation(this.IMAGES_DEAD);
       this.currentIndex++;
     } else {
@@ -137,4 +149,3 @@ class Boss extends MovableObject {
     }
   }
 }
-

@@ -10,8 +10,8 @@ class Character extends MovableObject {
     top: 60,
     left: 25,
     right: 45,
-    bottom: 80
-  }
+    bottom: 80,
+  };
 
   IMAGES_SWIMMING = [
     "./assets/img/1.Sharkie/1.IDLE/1.png",
@@ -117,8 +117,8 @@ class Character extends MovableObject {
     "./assets/img/1.Sharkie/4.Attack/Fin slap/8.png",
   ];
   world;
-  swimming_sound = new Audio('./assets/audio/swimming_sound.mp3');
-  hurt_sound = new Audio('./assets/audio/character_hurt.mp3');
+  swimming_sound = new Audio("./assets/audio/swimming_sound.mp3");
+  hurt_sound = new Audio("./assets/audio/character_hurt.mp3");
   movement = false;
 
   constructor() {
@@ -136,6 +136,9 @@ class Character extends MovableObject {
     this.animate();
   }
 
+  /**
+   * animate the character, movement and animations
+   */
   animate() {
     setInterval(() => {
       this.swimming_sound.pause();
@@ -145,13 +148,15 @@ class Character extends MovableObject {
       this.world.coinsBar.x = this.x - 80;
       this.world.poisonBar.x = this.x - 80;
     }, 1000 / 60);
-
     setInterval(() => {
       //Wait Animation
-       this.checkAnimations();
+      this.checkAnimations();
     }, 100);
   }
 
+  /**
+   * Check movement from player and his actions
+   */
   checkMovement() {
     this.checkMoveRight();
     this.checkMoveLeft();
@@ -160,6 +165,9 @@ class Character extends MovableObject {
     this.checkCharacterMovement();
   }
 
+  /**
+   * Check character movement
+   */
   checkCharacterMovement() {
     if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
       world.character.movement = true;
@@ -202,27 +210,35 @@ class Character extends MovableObject {
     }
   }
 
+  /**
+   * Animates the current status of the character
+   */
   checkAnimations() {
     if (this.isDead()) {
       this.playAnimation(this.IMAGES_DEAD);
-    } else if(this.isHurt()) {
-      this.jellyfish ? this.playAnimation(this.IMAGES_ELECTRIC_SHOCK) : this.playAnimation(this.IMAGES_POISON_HURT);
-    } else if(this.isAttack()) {
+    } else if (this.isHurt()) {
+      this.jellyfish
+        ? this.playAnimation(this.IMAGES_ELECTRIC_SHOCK)
+        : this.playAnimation(this.IMAGES_POISON_HURT);
+    } else if (this.isAttack()) {
       this.checkAttack();
-    } else if(this.isWaiting()) {
+    } else if (this.isWaiting()) {
       this.playSleepAnimation();
-    } else if(!this.movement) {
+    } else if (!this.movement) {
       this.playAnimation(this.IMAGES_SWIMMING);
-    } else if(this.movement) {
+    } else if (this.movement) {
       this.playAnimation(this.IMAGES_SWIMMING_MOVEMENT);
     }
   }
 
+  /**
+   * check actions of the character and change bubble attack state
+   */
   checkAttack() {
-    if(this.world.keyboard.D) {
+    if (this.world.keyboard.D) {
       this.playAnimation(this.IMAGES_SLAP_ATTACK);
-    } else if(this.world.keyboard.SPACE) {
-      if(this.world.poisonBar.progress == 100) {
+    } else if (this.world.keyboard.SPACE) {
+      if (this.world.poisonBar.progress == 100) {
         this.playAnimation(this.IMAGES_POISON_BUBBLE_ATTACK);
       } else {
         this.playAnimation(this.IMAGES_BUBBLE_ATTACK);
@@ -230,8 +246,11 @@ class Character extends MovableObject {
     }
   }
 
+  /**
+   * Animate sleep animation
+   */
   playSleepAnimation() {
-    if(this.currentIndex >= this.IMAGES_SLEEP.length) {
+    if (this.currentIndex >= this.IMAGES_SLEEP.length) {
       this.playAnimation(this.IMAGES_ONLY_SLEEP);
     } else {
       let index = this.currentIndex;
@@ -240,13 +259,21 @@ class Character extends MovableObject {
     }
   }
 
+  /**
+   * reset the sleep animate counters
+   */
   resetSleepAnimation() {
     this.currentIndex = 0;
     this.wait = 0;
   }
 
+  /**
+   *
+   * Checks whether the wait attribute is true or false
+   * @returns {boolean}
+   */
   isWaiting() {
-    if(this.wait >= 50) {
+    if (this.wait >= 50) {
       return true;
     } else {
       this.wait++;
@@ -254,8 +281,13 @@ class Character extends MovableObject {
     }
   }
 
+  /**
+   *
+   * Checks whether the SPACE or D attribute is true or false
+   * @returns {boolean}
+   */
   isAttack() {
-    if(this.world.keyboard.SPACE || this.world.keyboard.D) {
+    if (this.world.keyboard.SPACE || this.world.keyboard.D) {
       this.resetSleepAnimation();
       return true;
     } else {

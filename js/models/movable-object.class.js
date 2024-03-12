@@ -32,12 +32,23 @@ class MovableObject extends DrawableObject {
     this.y += this.speed;
   }
 
+  /**
+   * 
+   * This function plays an animation by setting the image attribute to the next image in the passed image sequence and incrementing the index of the current image, loading the images from an image cache.
+   * @param {array} images - A image array 
+   */
   playAnimation(images) {
     let index = this.currentImage % images.length;
     this.img = this.imageCache[images[index]];
     this.currentImage++;
   }
 
+  /**
+   * 
+   * This function checks whether two objects collide with each other by comparing their positions and dimensions and returns a collision if their areas overlap.
+   * @param {object} mo - moveable object
+   * @returns 
+   */
   isColliding(mo) {
     this.hitbox.right = Math.abs(this.hitbox.right);
     this.hitbox.left = Math.abs(this.hitbox.left);
@@ -57,6 +68,12 @@ class MovableObject extends DrawableObject {
     );    
   }
 
+  /**
+   * 
+   * This function checks whether two objects collide with each other by comparing their positions and dimensions and returns a collision if their areas overlap.
+   * @param {object} mo - moveable object 
+   * @returns 
+   */
   isSlapColliding(mo) {
     return (
       this.x + this.width > mo.x &&
@@ -69,6 +86,9 @@ class MovableObject extends DrawableObject {
     );
   }
 
+  /**
+   * This function reduces an object's energy by 20 units and sets the last hit timestamp to the current time if the energy does not fall below zero. When the energy falls below zero, it is set to zero.
+   */
   hit() {
     this.energy -= 20;
     if (this.energy < 0) {
@@ -78,16 +98,29 @@ class MovableObject extends DrawableObject {
     }
   }
 
+  /**
+   * 
+This function checks whether less than a second has passed since the last hit by calculating the difference between the current timestamp and the last hit timestamp and converting this difference to seconds. It returns true if less than a second has passed, otherwise false.
+   * @returns 
+   */
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
     return timepassed < 1;
   }
 
+  /**
+   * return a condition
+   * @returns 
+   */
   isDead() {
     return this.energy == 0;
   }
 
+  /**
+   * This function calculates and returns a hitbox object that defines the position and size of an object based on its coordinates (x, y), as well as its offset values ​​(offset) and dimensions (width, height).
+   * @returns 
+   */
   setHitbox() {
     return {
       left: this.x + this.offset.left,

@@ -44,6 +44,9 @@ class Pufferfish extends MovableObject {
         this.animate();
     }
 
+    /**
+     * This function runs two intervals: The first calls moveLeft() every 0.25 seconds to continuously move the object to the left. The second interval controls the animation of the object based on various conditions, playing either the death animation, an attack animation sequence, or a swimming animation sequence.
+     */
     animate() {
         setInterval(() => {
             this.moveLeft();
@@ -59,10 +62,16 @@ class Pufferfish extends MovableObject {
         }, 150);
     }
 
+    /**
+     * Set Energy to 0
+     */
     kill() {
         this.energy = 0;
     }
 
+    /**
+     * This function runs an animation sequence that periodically updates the object's position, causing it to move diagonally, and stops this movement after three seconds by clearing the interval.
+     */
     deadAnimation() {
         let interval = setInterval(() => {
             this.x -= 5;

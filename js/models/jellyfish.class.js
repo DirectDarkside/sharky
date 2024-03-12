@@ -1,7 +1,6 @@
 class Jellyfish extends MovableObject {
 
     energy = 100;
-
     IMAGES_SWIMMING = [
         "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png",
         "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png",
@@ -24,10 +23,12 @@ class Jellyfish extends MovableObject {
         this.x = 500 + Math.random() * 1500;
         this.y = 100 + Math.random() * 300;
         this.speed = 0.15 + Math.random() * 0.25;
-
         this.animate();
     }
 
+    /**
+     * Animates the current status of the character
+     */
     animate() {
         setInterval(() => {
             if(this.isDead()) {
@@ -39,12 +40,14 @@ class Jellyfish extends MovableObject {
         }, 175);
     }
 
+    /**
+     * Kill the jellyfish
+     */
     kill() {
         this.energy = 0;
         const interval = setInterval(() => {
             this.y -= 5;
         }, 1000 / 60);
-
         setTimeout(() => {
             clearInterval(interval);
         }, 4000);
