@@ -206,6 +206,9 @@ function setMobileShootEvent() {
     .addEventListener("touchstart", (e) => {
       if (e.cancelable) e.preventDefault();
       keyboard.SPACE = true;
+      if(rdy) world.checkThrowObjects();
+      rdy = false;
+      setTimeout(() => {rdy = true}, 750)
     });
   document.getElementById("shoot_button").addEventListener("touchend", (e) => {
     if (e.cancelable) e.preventDefault();
