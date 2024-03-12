@@ -52,9 +52,7 @@ function closeStartScreen() {
 
 function bindRestartAction() {
   document.getElementById("restart_img").addEventListener("click", () => {
-    document.getElementById("restart_img").style.display = "none";
-    resetLevel();
-    init();
+    window.location.reload();
   });
 }
 

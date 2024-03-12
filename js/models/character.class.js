@@ -149,7 +149,7 @@ class Character extends MovableObject {
     setInterval(() => {
       //Wait Animation
        this.checkAnimations();
-    }, 150);
+    }, 100);
   }
 
   checkMovement() {

@@ -43,9 +43,13 @@ class World {
 
   run() {
     setInterval(() => {
-      this.checkCollisions();
       this.checkThrowObjects();
-    }, 1000);
+      this.checkItemCollision();
+    }, 100);
+
+    setInterval(() => {
+      this.checkCollisions();
+    }, 500);
 
     setInterval(() => {
       this.checkHitCollision();
@@ -155,7 +159,6 @@ checkPoisonBubble(bubble) {
 
   checkCollisions() {
     this.checkEnemiesCollision();
-    this.checkItemCollision();
   }
 
   checkItemCollision() {
@@ -203,9 +206,6 @@ checkPoisonBubble(bubble) {
   checkHitPufferfish(enemy, index) {
     enemy.kill();
     enemy.deadAnimation();
-    setTimeout(() => {
-      this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
-    }, 3500);
   }
 
   checkHitCollision() {
@@ -230,9 +230,6 @@ checkPoisonBubble(bubble) {
   hitJellyfish(enemy) {
     if (enemy instanceof Jellyfish) {
       enemy.kill();
-      setTimeout(() => {
-        this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
-      }, 4500);
     }
   }
 

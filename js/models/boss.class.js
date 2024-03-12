@@ -63,7 +63,7 @@ class Boss extends MovableObject {
     top: 90,
     left: 20,
     right: 40,
-    bottom: 120,
+    bottom: 80,
   };
 
   constructor(x, y) {
