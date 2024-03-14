@@ -1,3 +1,7 @@
+/**
+ * This is the Level
+ * @class
+ */
 class Level {
     enemies;
     backgroundObjects;

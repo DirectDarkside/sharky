@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: levels/level1.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: levels/level1.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let enemies;
+let items;
+
+const backgroundObjects = [
+    new BackgroundObject('./assets/img/3. Background/Dark/2.png', -720, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Layers/1. Light/2.png', -720, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Dark/1.png', 0, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Layers/1. Light/1.png', 0, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Barrier/2.png', 320, 330),
+    new BackgroundObject('./assets/img/3. Background/Dark/2.png', 720, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Layers/1. Light/2.png', 720, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Dark/1.png', 1440, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Layers/1. Light/1.png', 1440, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Dark/2.png', 2160, 0, canvas.width, canvas.height),
+    new BackgroundObject('./assets/img/3. Background/Layers/1. Light/2.png', 2160, 0, canvas.width, canvas.height),
+];
+const gameWinObjects = [
+    new BackgroundObject('./assets/img/6.Botones/Try again/Mesa de trabajo 1.png', 0, 0, canvas.width, canvas.height)
+];
+const gameOverObjects = [
+    new BackgroundObject('./assets/img/6.Botones/Tittles/Game Over/Recurso 9.png', 250, 240, 240, 80)
+];
+let audioElements = [];
+let level1 = new Level(enemies, backgroundObjects, items, gameWinObjects, gameOverObjects, audioElements);
+
+/**
+ * This feature resets the level by creating new enemies and items as well as resetting the audio elements. The level is then reinitialized with the updated elements.
+ */
+function resetLevel() {
+    enemies = newEnemies();
+    items = newItems();
+    audioElements = [];
+    level1 = new Level(enemies, backgroundObjects, items, gameWinObjects, gameOverObjects, audioElements);
+}
+
+function newItems() {
+    return [
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+        new Coin(),
+
+        new Poison(),
+        new Poison(),
+        new Poison(),
+        new Poison(),
+        new Poison(),
+    ];
+}
+
+function newEnemies() {
+    return [
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Pufferfish(),
+        new Jellyfish(),
+        new Jellyfish(),
+        new Jellyfish(),
+        new Jellyfish(),
+    
+        new Boss(-500, -500),
+    ];
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BackgroundObject.html">BackgroundObject</a></li><li><a href="Boss.html">Boss</a></li><li><a href="Character.html">Character</a></li><li><a href="Coin.html">Coin</a></li><li><a href="CoinsBar.html">CoinsBar</a></li><li><a href="DrawableObject.html">DrawableObject</a></li><li><a href="Jellyfish.html">Jellyfish</a></li><li><a href="Keyboard.html">Keyboard</a></li><li><a href="Level.html">Level</a></li><li><a href="MovableObject.html">MovableObject</a></li><li><a href="Poison.html">Poison</a></li><li><a href="PoisonBar.html">PoisonBar</a></li><li><a href="Pufferfish.html">Pufferfish</a></li><li><a href="StatusBar.html">StatusBar</a></li><li><a href="ThrowableObject.html">ThrowableObject</a></li><li><a href="World.html">World</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bindRestartAction">bindRestartAction</a></li><li><a href="global.html#bindTouchAction">bindTouchAction</a></li><li><a href="global.html#checkDeviceOrientation">checkDeviceOrientation</a></li><li><a href="global.html#fullscreen">fullscreen</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#keysBindAction">keysBindAction</a></li><li><a href="global.html#mutePage">mutePage</a></li><li><a href="global.html#resetLevel">resetLevel</a></li><li><a href="global.html#stopSounds">stopSounds</a></li><li><a href="global.html#unmutePage">unmutePage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Mar 14 2024 10:50:30 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

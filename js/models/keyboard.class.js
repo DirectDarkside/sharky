@@ -1,3 +1,7 @@
+/**
+ * This is the Keyboard
+ * @class
+ */
 class Keyboard {
     UP = false;
     DOWN = false;

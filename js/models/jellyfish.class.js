@@ -1,3 +1,7 @@
+/**
+ * This is the Jellyfish
+ * @class
+ */
 class Jellyfish extends MovableObject {
 
     energy = 100;

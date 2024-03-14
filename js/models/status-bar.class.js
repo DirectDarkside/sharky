@@ -1,3 +1,7 @@
+/**
+ * This is the StatusBar
+ * @class
+ */
 class StatusBar extends DrawableObject {
 
     IMAGES = [

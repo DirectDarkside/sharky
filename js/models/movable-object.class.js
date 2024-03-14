@@ -1,3 +1,7 @@
+/**
+ * This is the MovableObject
+ * @class
+ */
 class MovableObject extends DrawableObject {
   speed = 0.15;
   otherDirection = false;

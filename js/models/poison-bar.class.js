@@ -1,3 +1,7 @@
+/**
+ * This is the PoisonBar
+ * @class
+ */
 class PoisonBar extends DrawableObject {
 
     progress = 0;

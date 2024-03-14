@@ -1,3 +1,7 @@
+/**
+ * This is the BackgroundObject
+ * @class
+ */
 class BackgroundObject extends MovableObject {
     
     width;

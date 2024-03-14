@@ -1,3 +1,7 @@
+/**
+ * This is the Coin
+ * @class
+ */
 class Coin extends MovableObject {
   takeSound = new Audio("./assets/audio/take_coin.mp3");
 

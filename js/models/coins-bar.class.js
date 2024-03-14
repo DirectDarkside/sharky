@@ -1,3 +1,7 @@
+/**
+ * This is the CoinsBar
+ * @class
+ */
 class CoinsBar extends DrawableObject{
 
     progress = 0;

@@ -1,3 +1,7 @@
+/**
+ * This is the ThrowableObject
+ * @class
+ */
 class ThrowableObject extends MovableObject {
 
     constructor(x, y, orientation) {

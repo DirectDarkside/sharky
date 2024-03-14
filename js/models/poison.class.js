@@ -1,3 +1,7 @@
+/**
+ * This is the Poison
+ * @class
+ */
 class Poison extends MovableObject {
 
     IMAGES = [
